@@ -17,6 +17,7 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var progressSpinner: UIActivityIndicatorView!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var ivBarcode: UIImageView!
+    @IBOutlet weak var tvEnterInstruct: UILabel!
     
     let imgEntercode = UIImage(named: "ic_entercode_click")! as UIImage
     var time: Float = 0.0
@@ -33,6 +34,8 @@ class ConfirmViewController: UIViewController {
         progressSpinner.startAnimating()
         progressBar.setProgress(0, animated: true)
         ivBarcode.alpha = 0.0
+        tvEnterInstruct.alpha = 0.0
+        btnEntercode.alpha = 0.0
         startCounter()
     }
 
@@ -46,6 +49,8 @@ class ConfirmViewController: UIViewController {
         self.progressBar.isHidden = true
         tvBarcodeInstr.text = "Please scan the barcode below at checkout."
         fadeIn(imageView: ivBarcode, withDuration: 2.5)
+        fadeIn(textView: tvEnterInstruct)
+        fadeIn(btnView: btnEntercode)
     }
     
     func startCounter(){
@@ -60,12 +65,13 @@ class ConfirmViewController: UIViewController {
             showBarcode()
             tvRequestTitle.text = "Ride Requested"
             tvRequestTitle.textColor = tvBarcodeInstr.textColor
+            
         }
     }
     
     func blinkingTitle(){
         timeSlow += 1
-        if timeSlow <= 10 {
+        if timeSlow <= 8 {
             blinkingLabel()
         }
     }
@@ -76,7 +82,19 @@ class ConfirmViewController: UIViewController {
         })
     }
     
-    func blinkingLabel(withDuration duration: TimeInterval = 2.0){
+    func fadeIn(textView: UILabel, withDuration duration: TimeInterval = 2.0) {
+        UIView.animate(withDuration: duration, animations: {
+            textView.alpha = 1.0
+        })
+    }
+    
+    func fadeIn(btnView: BorderedButton, withDuration duration: TimeInterval = 2.0) {
+        UIView.animate(withDuration: duration, animations: {
+            btnView.alpha = 1.0
+        })
+    }
+    
+    func blinkingLabel(withDuration duration: TimeInterval = 1.5){
         if !blinking{
             self.tvRequestTitle.alpha = 1.0
             UIView.animate(withDuration: duration, animations: {

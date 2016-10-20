@@ -24,6 +24,7 @@ class EntercodeViewController: UIViewController {
         super.viewDidLoad()
         
         btnFinish.setImage(imgFinish, for: .highlighted)
+        edCode1.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
