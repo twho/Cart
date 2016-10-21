@@ -69,7 +69,7 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         lat = location!.coordinate.latitude
         lng = location!.coordinate.longitude
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
         self.geocoder.reverseGeocodeLocation(location!, completionHandler: {(placemarks, error) -> Void in

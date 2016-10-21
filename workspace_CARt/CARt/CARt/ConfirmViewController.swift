@@ -71,7 +71,7 @@ class ConfirmViewController: UIViewController {
     
     func blinkingTitle(){
         timeSlow += 1
-        if timeSlow <= 8 {
+        if timeSlow <= 6 {
             blinkingLabel()
         }
     }

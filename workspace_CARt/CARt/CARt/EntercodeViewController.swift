@@ -25,10 +25,21 @@ class EntercodeViewController: UIViewController {
         
         btnFinish.setImage(imgFinish, for: .highlighted)
         edCode1.becomeFirstResponder()
+        self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func edCode1Edited(_ sender: UITextField) {
+        edCode2.becomeFirstResponder()
+    }
+    @IBAction func edCode2Edited(_ sender: UITextField) {
+        edCode3.becomeFirstResponder()
+    }
+    @IBAction func edCode3Edited(_ sender: UITextField) {
+        edCode4.becomeFirstResponder()
+    }
+    
 }

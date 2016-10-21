@@ -1,0 +1,6 @@
+framework module Pods_CARt {
+  umbrella header "Pods-CARt-umbrella.h"
+
+  export *
+  module * { export * }
+}

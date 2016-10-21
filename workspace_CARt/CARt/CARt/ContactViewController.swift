@@ -6,7 +6,10 @@
 //  Copyright © 2016 cartrides.org. All rights reserved.
 //
 
+//https://github.com/Marxon13/M13Checkbox
+
 import UIKit
+import M13Checkbox
 
 class ContactViewController: UIViewController, UITextFieldDelegate {
 
@@ -15,6 +18,9 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edFirstName: UITextField!
     @IBOutlet weak var edLastName: UITextField!
     @IBOutlet weak var edPhone: UITextField!
+    @IBOutlet weak var checkbox: M13Checkbox!
+    
+    var isChecked: Bool = false
     
     //load image
     let imgNext = UIImage(named: "ic_next_click")! as UIImage
@@ -27,12 +33,23 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
         btnPrev.setImage(imgPrev, for: .highlighted)
         self.edFirstName.delegate = self
         self.edLastName.delegate = self
-        edFirstName.becomeFirstResponder()
+        self.edFirstName.becomeFirstResponder()
+//        self.checkbox.stateChangeAnimation = M13Checkbox.Animation.fill
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func checkboxClicked(_ sender: M13Checkbox) {
+        if isChecked {
+            checkbox.setCheckState(M13Checkbox.CheckState.unchecked, animated: true)
+            self.isChecked = false
+        } else {
+            checkbox.setCheckState(M13Checkbox.CheckState.checked, animated: true)
+            self.isChecked = true
+        }
     }
     
     @IBAction func phoneTextWatcher(_ sender: UITextField) {

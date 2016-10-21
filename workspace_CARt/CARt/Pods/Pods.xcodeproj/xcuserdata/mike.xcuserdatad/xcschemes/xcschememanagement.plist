@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>M13Checkbox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CARt.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CARtTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CARtUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1235403CEF207769BE9CB51DD7E48B11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>29B930B3E783E72C272E15A0FB001F72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39A204FCB78FFA83E996C40FF3B4AC11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B791ACC06F2333FC6216A92E49932D77</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

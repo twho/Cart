@@ -6,6 +6,7 @@
 //  Copyright © 2016 cartrides.org. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import MapKit
 import CoreLocation
@@ -20,14 +21,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var btnRequest: BorderedButton!
     @IBOutlet weak var edDestination: UITextField!
     @IBOutlet weak var ivDestination: UIImageView!
+    @IBOutlet weak var tvDestination: UILabel!
     
     var locationManager: CLLocationManager!
     var geocoder: CLGeocoder!
     var storeList:[MKMapItem] = []
+    var routes:[MKOverlay] = []
     var selectedPin:MKPlacemark? = nil
     var storeLat: Double = 0.0
     var storeLng: Double = 0.0
     var storeAddr: String = ""
+    var ifRouteDrawn: Bool = false
     
     let imgRequest = UIImage(named: "ic_request_click")! as UIImage
     let defaults = UserDefaults.standard
@@ -109,7 +113,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.mapView.removeAnnotations(self.mapView.annotations)
             for index in 0...self.storeList.count-1{
                 let selectedItem = self.storeList[index].placemark
-                self.dropPinZoomIn(placemark: selectedItem, sequence: index)
+                if selectedItem.name!.lowercased().range(of:"pharmacy") == nil && selectedItem.name!.lowercased().range(of:"gas") == nil{
+                    self.dropPinZoomIn(placemark: selectedItem, sequence: index)
+                }
             }
         }
     }
@@ -132,46 +138,84 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func dropPinZoomIn(placemark: MKPlacemark, sequence: Int){
-        if sequence == 0 {
+        if sequence == 0 && !self.ifRouteDrawn {
             edDestination.text = placemark.title!
             storeAddr = placemark.title!
-            let request = MKDirectionsRequest()
-            request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!), addressDictionary: nil))
             storeLat = placemark.coordinate.latitude
             storeLng = placemark.coordinate.longitude
-            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude), addressDictionary: nil))
-            request.requestsAlternateRoutes = false
-            request.transportType = .automobile
-            let directions = MKDirections(request: request)
-            directions.calculate { [unowned self] response, error in
-                guard let unwrappedResponse = response else { return }
-                for route in unwrappedResponse.routes {
-                    self.mapView.add(route.polyline)
-//                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: false)
-                }
-            }
+            drawRoute(sourceLocation: CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!), destinationLocation: CLLocationCoordinate2D(latitude: placemark.coordinate.latitude, longitude: placemark.coordinate.longitude))
+            let center = CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.13, longitudeDelta: 0.13))
+            mapView.setRegion(region, animated: true)
+            ifRouteDrawn = true
         }
         // cache the pin
-        selectedPin = placemark
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city)" + ", " + "\(state)"
+        let pinAnnotation = PinAnnotation()
+        pinAnnotation.title = placemark.name!
+        pinAnnotation.subtitle = "\(placemark.title!)"
+        pinAnnotation.setCoordinate(newCoordinate: placemark.coordinate)
+        mapView.addAnnotation(pinAnnotation)
+    }
+    
+    func drawRoute(sourceLocation: CLLocationCoordinate2D, destinationLocation: CLLocationCoordinate2D){
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: sourceLocation, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinationLocation, addressDictionary: nil))
+        request.requestsAlternateRoutes = false
+        request.transportType = .automobile
+        let directions = MKDirections(request: request)
+        directions.calculate { [unowned self] response, error in
+            guard let unwrappedResponse = response else { return }
+            let distance = Double(round(100*(Double((response!.routes.first?.distance)!)/1609))/100)
+            self.tvDestination.text = "The selected Meijer is \(distance) mi away. This trip will cost you $\(Double(round(10*(distance*1.55)/10))) - $\(Double(round(10*(distance*2.05)/10)))."
+            self.routes = []
+            for route in unwrappedResponse.routes {
+                self.mapView.add(route.polyline)
+                self.routes.append(route.polyline)
+//                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: false)
+            }
         }
-        mapView.addAnnotation(annotation)
-        let center = CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.13, longitudeDelta: 0.13))
-//        let span = MKCoordinateSpanMake(0.3, 0.3)
-//        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-        mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
         renderer.strokeColor = edDestination.tintColor
         return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is PinAnnotation {
+            let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+            
+            pinAnnotationView.pinTintColor = .red
+            pinAnnotationView.isDraggable = true
+            pinAnnotationView.canShowCallout = true
+            pinAnnotationView.animatesDrop = true
+            
+            let setDestination = UIButton(type: UIButtonType.custom) as UIButton
+            setDestination.frame.size.width = 40
+            setDestination.frame.size.height = 40
+            setDestination.backgroundColor = UIColor.white
+            setDestination.setImage(UIImage(named: "ic_destination"), for: .normal)
+            
+            pinAnnotationView.leftCalloutAccessoryView = setDestination
+            
+            return pinAnnotationView
+        }
+        
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if let annotation = view.annotation as? PinAnnotation {
+            //do things when the annotation is clicked
+            storeLat = annotation.coordinate.latitude
+            storeLng = annotation.coordinate.longitude
+            storeAddr = annotation.subtitle!
+            edDestination.text = storeAddr
+            self.mapView.removeOverlays(routes)
+            drawRoute(sourceLocation: CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!), destinationLocation: CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude))
+        }
     }
     
     func keyboardWillShow(notification: NSNotification) {
