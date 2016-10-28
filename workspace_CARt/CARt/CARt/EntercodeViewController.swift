@@ -11,19 +11,24 @@ import UIKit
 class EntercodeViewController: UIViewController {
     
     
-    @IBOutlet weak var btnFinish: BorderedButton!
+    
+    @IBOutlet weak var btnNext: BorderedButton!
+    @IBOutlet weak var btnPrev: BorderedButton!
     
     @IBOutlet weak var edCode1: UITextField!
     @IBOutlet weak var edCode2: UITextField!
     @IBOutlet weak var edCode3: UITextField!
     @IBOutlet weak var edCode4: UITextField!
     
-    let imgFinish = UIImage(named: "ic_finish_click")! as UIImage
+    let imgNext = UIImage(named: "ic_next_click")! as UIImage
+    let imgPrev = UIImage(named: "ic_prev_click")! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnFinish.setImage(imgFinish, for: .highlighted)
+        btnNext.setImage(imgNext, for: .highlighted)
+        btnPrev.setImage(imgPrev, for: .highlighted)
+        btnNext.isEnabled = false
         edCode1.becomeFirstResponder()
         self.hideKeyboardWhenTappedAround()
     }
@@ -40,6 +45,9 @@ class EntercodeViewController: UIViewController {
     }
     @IBAction func edCode3Edited(_ sender: UITextField) {
         edCode4.becomeFirstResponder()
+    }
+    @IBAction func edCode4Edited(_ sender: UITextField) {
+        btnNext.isEnabled = true
     }
     
 }

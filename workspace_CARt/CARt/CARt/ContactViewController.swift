@@ -17,10 +17,12 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnPrev: BorderedButton!
     @IBOutlet weak var edFirstName: UITextField!
     @IBOutlet weak var edLastName: UITextField!
-    @IBOutlet weak var edPhone: UITextField!
     @IBOutlet weak var checkbox: M13Checkbox!
-    
-    var isChecked: Bool = false
+    @IBOutlet weak var edBdYear: UITextField!
+    @IBOutlet weak var edBdMonth: UITextField!
+    @IBOutlet weak var edBdDay: UITextField!
+    @IBOutlet weak var tvAgeMsg: UILabel!
+    @IBOutlet weak var tvTitle: UILabel!
     
     //load image
     let imgNext = UIImage(named: "ic_next_click")! as UIImage
@@ -33,6 +35,10 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
         btnPrev.setImage(imgPrev, for: .highlighted)
         self.edFirstName.delegate = self
         self.edLastName.delegate = self
+        self.edBdYear.delegate = self
+        self.edBdMonth.delegate = self
+        self.edBdDay.delegate = self
+        btnNext.isEnabled = false
         self.edFirstName.becomeFirstResponder()
 //        self.checkbox.stateChangeAnimation = M13Checkbox.Animation.fill
     }
@@ -42,25 +48,57 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func checkboxClicked(_ sender: M13Checkbox) {
-        if isChecked {
-            checkbox.setCheckState(M13Checkbox.CheckState.unchecked, animated: true)
-            self.isChecked = false
+    @IBAction func yearTextWatcher(_ sender: UITextField) {
+        let bdYearStr = sender.text! as String
+        let bdYear = Int(sender.text!)
+        if bdYearStr.characters.count == 4 {
+            if bdYear! < 1997 {
+                tvAgeMsg.textColor = btnNext.tintColor
+                tvAgeMsg.text = "Yes, I am 18 yrs old or older."
+                checkbox.tintColor = btnNext.tintColor
+                checkbox.setCheckState(M13Checkbox.CheckState.checked, animated: true)
+                 edBdMonth.becomeFirstResponder()
+            } else {
+                tvAgeMsg.textColor = UIColor.red
+                checkbox.tintColor = UIColor.red
+                checkbox.setCheckState(M13Checkbox.CheckState.mixed, animated: true)
+            }
         } else {
-            checkbox.setCheckState(M13Checkbox.CheckState.checked, animated: true)
-            self.isChecked = true
+            tvAgeMsg.textColor = tvTitle.textColor
+            tvAgeMsg.text = "You must be at least 18 yrs old to ride."
+            checkbox.setCheckState(M13Checkbox.CheckState.unchecked, animated: true)
         }
     }
     
-    @IBAction func phoneTextWatcher(_ sender: UITextField) {
-        phoneTextEditor(textField: sender)
+    @IBAction func monthTextWatcher(_ sender: UITextField) {
+        let bdMonthStr = sender.text! as String
+        let bdMonth = Int(sender.text!)
+        if bdMonthStr.characters.count == 2 {
+            if bdMonth! > 0 && bdMonth! < 13 {
+                self.edBdDay.becomeFirstResponder()
+            }
+        }
+    }
+    
+    @IBAction func dayTextWatcher(_ sender: UITextField) {
+        let bdMonthStr = sender.text! as String
+        let bdMonth = Int(sender.text!)
+        if bdMonthStr.characters.count == 2 {
+            if bdMonth! > 0 && bdMonth! < 32 {
+                btnNext.isEnabled = true
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.edFirstName {
             self.edLastName.becomeFirstResponder()
         } else if textField == self.edLastName{
-            self.edPhone.becomeFirstResponder()
+            self.edBdYear.becomeFirstResponder()
+        } else if textField == self.edBdYear{
+            self.edBdMonth.becomeFirstResponder()
+        } else if textField == self.edBdMonth{
+            self.edBdDay.becomeFirstResponder()
         }
         return true
     }
@@ -73,28 +111,5 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
             print("Backspace was pressed")
         }
         return true
-    }
-    
-    private func phoneTextEditor(textField: UITextField) {
-        let phoneStr = textField.text! as String
-        let numStr = phoneStr.components(separatedBy:
-            NSCharacterSet.decimalDigits.inverted).joined(separator: "")
-        switch numStr.characters.count {
-        case 0:
-            textField.text = ""
-        case 1:
-            let index = numStr.index(numStr.startIndex, offsetBy: 1)
-            textField.text = "(" + numStr.substring(to: index)
-        case 4:
-            let index = numStr.index(numStr.startIndex, offsetBy: 3)
-            let indexBack = numStr.index(numStr.endIndex, offsetBy: -1)
-            textField.text = "(" + numStr.substring(to: index) + ") " + numStr.substring(from: indexBack)
-        case 7:
-            let index = numStr.index(numStr.startIndex, offsetBy: 3)
-            let indexBack = numStr.index(numStr.endIndex, offsetBy: -1)
-            textField.text = "(" + numStr.substring(to: index) + ") " + numStr.substring(with: index..<indexBack) + "-" + numStr.substring(from: indexBack)
-        default:
-            break
-        }
     }
 }
