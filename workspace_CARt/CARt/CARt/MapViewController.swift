@@ -33,7 +33,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var storeAddr: String = ""
     var ifRouteDrawn: Bool = false
     
-    let imgRequest = UIImage(named: "ic_request_click")! as UIImage
+    let imgRequestClicked = UIImage(named: "ic_request_click")! as UIImage
+    let imgRequest = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
     
     struct addressKeys {
@@ -56,7 +57,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
-        btnRequest.setImage(imgRequest, for: .highlighted)
+        btnRequest.setImage(imgRequestClicked, for: .highlighted)
+        btnRequest.setImage(imgRequest, for: .normal)
         edDestination.leftViewMode = UITextFieldViewMode.always
         edDestination.leftView = ivDestination
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

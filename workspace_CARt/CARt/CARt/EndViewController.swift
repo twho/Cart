@@ -14,13 +14,17 @@ class EndViewController: UIViewController {
     @IBOutlet weak var btnCancel: BorderedButton!
     @IBOutlet weak var btnSend: BorderedButton!
     
-    let imgCancel = UIImage(named: "ic_cancel_click")
-    let imgSend = UIImage(named: "ic_finish_click")
+    let imgCancelClicked = UIImage(named: "ic_cancel_click")
+    let imgCancel = (UIImage(named: "ic_cancel_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgSendClicked = UIImage(named: "ic_finish_click")
+    let imgSend = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnCancel.setImage(imgCancel, for: .highlighted)
+        btnCancel.setImage(imgCancelClicked, for: .highlighted)
+        btnCancel.setImage(imgCancel, for: .normal)
+        btnSend.setImage(imgSendClicked, for: .highlighted)
         btnSend.setImage(imgSend, for: .highlighted)
         self.hideKeyboardWhenTappedAround()
     }

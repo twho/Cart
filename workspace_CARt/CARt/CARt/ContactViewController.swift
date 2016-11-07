@@ -25,20 +25,24 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tvTitle: UILabel!
     
     //load image
-    let imgNext = UIImage(named: "ic_next_click")! as UIImage
-    let imgPrev = UIImage(named: "ic_prev_click")! as UIImage
+    let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
+    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
+    let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnNext.setImage(imgNext, for: .highlighted)
-        btnPrev.setImage(imgPrev, for: .highlighted)
+        btnNext.setImage(imgNextClicked, for: .highlighted)
+        btnNext.setImage(imgNext, for: .normal)
+        btnPrev.setImage(imgPrevClicked, for: .highlighted)
+        btnPrev.setImage(imgPrev, for: .normal)
         self.edFirstName.delegate = self
         self.edLastName.delegate = self
         self.edBdYear.delegate = self
         self.edBdMonth.delegate = self
         self.edBdDay.delegate = self
-        btnNext.isEnabled = false
+//        btnNext.isEnabled = false
         self.edFirstName.becomeFirstResponder()
 //        self.checkbox.stateChangeAnimation = M13Checkbox.Animation.fill
     }

@@ -19,6 +19,7 @@
 		27787FD31DB858BF002D7CE0 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27787FD21DB858BF002D7CE0 /* AddressViewController.swift */; };
 		27787FD61DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */; };
 		278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278738F41DBFEE060047EE32 /* PhoneViewController.swift */; };
+		27C0A5C11DD11BC900B9FB2B /* imageColorFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */; };
 		27DB36141DB487E800753ED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DB36131DB487E800753ED5 /* Assets.xcassets */; };
 		27DB36181DB4944E00753ED5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB36171DB4944E00753ED5 /* ContactViewController.swift */; };
 		27E336891DB98E5B00DB9D9A /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */; };
@@ -68,6 +69,7 @@
 		27787FD21DB858BF002D7CE0 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HideKeyboardByTapViewController.swift; path = ../HideKeyboardByTapViewController.swift; sourceTree = "<group>"; };
 		278738F41DBFEE060047EE32 /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
+		27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageColorFilter.swift; sourceTree = "<group>"; };
 		27DB36131DB487E800753ED5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27DB36171DB4944E00753ED5 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
@@ -148,7 +150,6 @@
 				27097DDF1DB4655900F3D1DC /* Main.storyboard */,
 				27097DE41DB4655900F3D1DC /* LaunchScreen.storyboard */,
 				27097DE71DB4655900F3D1DC /* Info.plist */,
-				27097E091DB4736E00F3D1DC /* BorderedButton.swift */,
 			);
 			path = CARt;
 			sourceTree = "<group>";
@@ -189,10 +190,12 @@
 		27787FD41DB85AC2002D7CE0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				27097E091DB4736E00F3D1DC /* BorderedButton.swift */,
 				27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */,
 				27F2D17E1DB57403003CF00D /* TextFieldMaxLengths.swift */,
 				27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */,
 				27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */,
+				27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */,
 				27097DDE1DB4655900F3D1DC /* ViewController.swift in Sources */,
 				27097DDC1DB4655900F3D1DC /* AppDelegate.swift in Sources */,
+				27C0A5C11DD11BC900B9FB2B /* imageColorFilter.swift in Sources */,
 				27097E0A1DB4736E00F3D1DC /* BorderedButton.swift in Sources */,
 				27602BA51DB8184C00F1BB36 /* ReturnmapViewController.swift in Sources */,
 				27E3368B1DB99F0200DB9D9A /* EndViewController.swift in Sources */,

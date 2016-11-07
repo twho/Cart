@@ -24,7 +24,8 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     var timer = Timer()
     
     let defaults = UserDefaults.standard
-    let imgConfirm = UIImage(named: "ic_request_click")! as UIImage
+    let imgConfirmClicked = UIImage(named: "ic_request_click")! as UIImage
+    let imgConfirm = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     struct addressKeys {
         static let myAddressKey = "myAddress"
         static let myAddressLat = "myAddressLat"
@@ -48,7 +49,8 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         
         self.btnCancelRide.alpha = 0.0
         self.tvInfoDetails.text = "Request your free ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
-        self.btnConfirm.setImage(imgConfirm, for: .highlighted)
+        self.btnConfirm.setImage(imgConfirmClicked, for: .highlighted)
+        self.btnConfirm.setImage(imgConfirm, for: .normal)
         drawRoute()
     }
 

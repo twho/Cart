@@ -21,7 +21,8 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var locationManager: CLLocationManager!
     var geocoder: CLGeocoder!
     
-    let imgSet = UIImage(named: "ic_finish_click")! as UIImage
+    let imgSetClicked = UIImage(named: "ic_finish_click")! as UIImage
+    let imgSet = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
     
     var lat: Double = 0.0
@@ -38,7 +39,8 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
         
-        btnSet.setImage(imgSet, for: .highlighted)
+        btnSet.setImage(imgSetClicked, for: .highlighted)
+        btnSet.setImage(imgSet, for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         self.hideKeyboardWhenTappedAround()

@@ -19,7 +19,8 @@ class ConfirmViewController: UIViewController {
     @IBOutlet weak var ivBarcode: UIImageView!
     @IBOutlet weak var tvEnterInstruct: UILabel!
     
-    let imgEntercode = UIImage(named: "ic_entercode_click")! as UIImage
+    let imgEntercodeClicked = UIImage(named: "ic_entercode_click")! as UIImage
+    let imgEntercode = (UIImage(named: "ic_entercode_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     var time: Float = 0.0
     var timeSlow: Float = 0.0
     var timer = Timer()
@@ -30,7 +31,8 @@ class ConfirmViewController: UIViewController {
         super.viewDidLoad()
 
         tvRequestDetail.text = "Request sent, please wait. Sample text sample text sample text sample text sample text sample text sample text sample text sample text sample text "
-        btnEntercode.setImage(imgEntercode, for: .highlighted)
+        btnEntercode.setImage(imgEntercodeClicked, for: .highlighted)
+        btnEntercode.setImage(imgEntercode, for: .normal)
         progressSpinner.startAnimating()
         progressBar.setProgress(0, animated: true)
         ivBarcode.alpha = 0.0

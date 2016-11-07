@@ -20,8 +20,10 @@ class EntercodeViewController: UIViewController {
     @IBOutlet weak var edCode3: UITextField!
     @IBOutlet weak var edCode4: UITextField!
     
-    let imgNext = UIImage(named: "ic_next_click")! as UIImage
-    let imgPrev = UIImage(named: "ic_prev_click")! as UIImage
+    let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
+    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
+    let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()

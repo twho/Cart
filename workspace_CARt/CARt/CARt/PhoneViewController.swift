@@ -13,13 +13,15 @@ class PhoneViewController: UIViewController {
     @IBOutlet weak var edPhone: UITextField!
     @IBOutlet weak var btnVerify: BorderedButton!
     
-    let imgVerify = UIImage(named: "ic_finish_click")! as UIImage
+    let imgVerifyClicked = UIImage(named: "ic_finish_click")! as UIImage
+    let imgVerify = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnVerify.setImage(imgVerify, for: .highlighted)
-        btnVerify.isEnabled = false
+        btnVerify.setImage(imgVerifyClicked, for: .highlighted)
+        btnVerify.setImage(imgVerify, for: .normal)
+//        btnVerify.isEnabled = false
         self.edPhone.becomeFirstResponder()
     }
 
