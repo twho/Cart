@@ -8,9 +8,10 @@
 
 import UIKit
 
-class EndViewController: UIViewController {
+class EndViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var edEmail: UITextField!
+    @IBOutlet weak var edComment: UITextField!
     @IBOutlet weak var btnCancel: BorderedButton!
     @IBOutlet weak var btnSend: BorderedButton!
     @IBOutlet weak var edStoreAddr: UITextField!
@@ -19,11 +20,16 @@ class EndViewController: UIViewController {
     @IBOutlet weak var btnSurvey: BorderedButton!
     @IBOutlet weak var ivStore: UIImageView!
     @IBOutlet weak var ivHome: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let imgCancelClicked = UIImage(named: "ic_cancel_click")
-    let imgCancel = (UIImage(named: "ic_cancel_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgCancel = UIImage(named: "ic_cancel")
     let imgSendClicked = UIImage(named: "ic_finish_click")
-    let imgSend = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgSend = UIImage(named: "ic_send")
+    let imgReferClicked = UIImage(named: "ic_refer_click")! as UIImage
+    let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgSurveyClicked = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.white)!)! as UIImage
+    let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
     
     struct addressKeys {
@@ -41,7 +47,11 @@ class EndViewController: UIViewController {
         btnCancel.setImage(imgCancelClicked, for: .highlighted)
         btnCancel.setImage(imgCancel, for: .normal)
         btnSend.setImage(imgSendClicked, for: .highlighted)
-        btnSend.setImage(imgSend, for: .highlighted)
+        btnSend.setImage(imgSend, for: .normal)
+        btnSurvey.setImage(imgSurveyClicked, for: .highlighted)
+        btnSurvey.setImage(imgSurvey, for: .normal)
+        btnRefer.setImage(imgReferClicked, for: .highlighted)
+        btnRefer.setImage(imgRefer, for: .normal)
         edStoreAddr.leftViewMode = UITextFieldViewMode.always
         edStoreAddr.leftView = ivStore
         edStoreAddr.text = defaults.string(forKey: addressKeys.destAddressKey)
@@ -50,11 +60,21 @@ class EndViewController: UIViewController {
         edHomeAddr.text = defaults.string(forKey: addressKeys.myAddressKey)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.scrollView.contentSize.height = 1450
+        self.edEmail.delegate = self
+        self.edComment.delegate = self
         self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()    }
+        super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {

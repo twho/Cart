@@ -126,7 +126,7 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.fadeInContents()
     }
     
-    @IBAction func btnConfirmPressed(_ sender: BorderedButton) {
+    @IBAction func btnRequestPressed(_ sender: BorderedButton) {
         let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to request a ride from Meijer to your home.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
         }

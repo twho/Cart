@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfirmViewController: UIViewController {
+class ConfirmViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tvBarcodeInstr: UILabel!
     @IBOutlet weak var tvRequestTitle: UILabel!
@@ -36,6 +36,7 @@ class ConfirmViewController: UIViewController {
     var timeSlow: Float = 0.0
     var timer = Timer()
     var timerSlow = Timer()
+    var ifToEditCode1: Bool = false
     var blinking = false
     
     struct addressKeys {
@@ -51,7 +52,7 @@ class ConfirmViewController: UIViewController {
         super.viewDidLoad()
         btnFinished.setImage(imgFinishClicked, for: .highlighted)
         btnFinished.setImage(imgFinish, for: .normal)
-        self.scrollView.contentSize.height = 730
+        self.scrollView.contentSize.height = 930
         progressSpinner.startAnimating()
         progressBar.setProgress(0, animated: true)
         ivBarcode.alpha = 0.0
@@ -64,10 +65,16 @@ class ConfirmViewController: UIViewController {
         edDestination.leftViewMode = UITextFieldViewMode.always
         edDestination.leftView = ivDestination
         edDestination.text = defaults.string(forKey: addressKeys.destAddressKey)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         btnFinished.setImage(imgFinishClicked, for: .highlighted)
         btnFinished.setImage(imgFinish, for: .normal)
+        self.edCode1.delegate = self
+        self.edCode2.delegate = self
+        self.edCode3.delegate = self
+        self.edCode4.delegate = self
+        self.edCode5.delegate = self
+        self.edCode6.delegate = self
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -83,7 +90,6 @@ class ConfirmViewController: UIViewController {
         fadeIn(imageView: ivBarcode, withDuration: 2.5)
         fadeIn(textView: tvEnterInstruct)
         fadeIn(btnView: btnFinished)
-        edCode1.becomeFirstResponder()
     }
     
     func startCounter(){
@@ -98,7 +104,10 @@ class ConfirmViewController: UIViewController {
             showBarcode()
             tvRequestTitle.text = "Ride Requested"
             tvRequestTitle.textColor = tvBarcodeInstr.textColor
-            
+            if (!ifToEditCode1){
+                edCode1.becomeFirstResponder()
+                ifToEditCode1 = true
+            }
         }
     }
     
@@ -143,35 +152,49 @@ class ConfirmViewController: UIViewController {
     }
     
     @IBAction func edCode1Edited(_ sender: UITextField) {
+        edCode1.endEditing(true)
         edCode2.becomeFirstResponder()
     }
     
-    @IBAction func edCode2Edited(_ sender: AnyObject) {
+    @IBAction func edCode2Edited(_ sender: UITextField) {
+        edCode2.endEditing(true)
         edCode3.becomeFirstResponder()
     }
     
     @IBAction func edCode3Edited(_ sender: UITextField) {
+        edCode3.endEditing(true)
         edCode4.becomeFirstResponder()
     }
     
     @IBAction func edCode4Edited(_ sender: UITextField) {
+        edCode4.endEditing(true)
         edCode5.becomeFirstResponder()
     }
     
     @IBAction func edCode5Edited(_ sender: UITextField) {
+        edCode5.endEditing(true)
         edCode6.becomeFirstResponder()
+    }
+    
+    @IBAction func edCode6Edited(_ sender: UITextField) {
+        self.performSegue(withIdentifier: "confirmToReturnIdentifier", sender: self)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height
+            self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height - 45
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y = self.view.frame.origin.y + keyboardSize.height
+                self.view.frame.origin.y = self.view.frame.origin.y + keyboardSize.height + 45
             }
         }
     }

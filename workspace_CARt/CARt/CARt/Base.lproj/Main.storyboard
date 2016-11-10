@@ -312,6 +312,10 @@
                                 <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3j4-5V-aK7">
+                                <frame key="frameInset" minY="71" width="375" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                             <view alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t0J-6u-qvV">
                                 <frame key="frameInset" minY="71" width="375" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -322,10 +326,6 @@
                                 <frame key="frameInset" minX="142" minY="33" width="90.500000000000043" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3j4-5V-aK7">
-                                <frame key="frameInset" minY="71" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a Meijer location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-YC-x0N">
                                 <frame key="frameInset" minX="16" minY="454" width="343" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -480,7 +480,7 @@
                                 </connections>
                             </textField>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-VB-IBx" customClass="BorderedButton" customModule="CARt" customModuleProvider="target">
-                                <frame key="frameInset" minX="7.23%" minY="248" width="140" height="60"/>
+                                <frame key="frameInset" minX="7.02%" minY="248" width="140" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -572,6 +572,7 @@
                                 </state>
                                 <connections>
                                     <action selector="btnRequestPressed:" destination="w9R-eO-BbW" eventType="touchUpInside" id="j6y-FP-teU"/>
+                                    <action selector="btnRequestPressed:" destination="rvv-f2-weQ" eventType="touchUpInside" id="sMM-xF-ai0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -586,7 +587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvg-cf-D4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4138.3999999999996" y="717.39130434782612"/>
+            <point key="canvasLocation" x="4148" y="856"/>
         </scene>
         <!--Confirm Home Address-->
         <scene sceneID="M4J-OU-5kv">
@@ -707,11 +708,11 @@
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXM-jw-x0a">
-                                <frame key="frameInset" minY="76" width="375" height="994"/>
+                                <frame key="frameInset" minY="76" width="375" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yf-cz-UDg">
-                                        <rect key="frame" x="0.0" y="7" width="375" height="980"/>
+                                        <rect key="frame" x="0.0" y="7" width="375" height="1004"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hVI-up-rZ8">
@@ -824,7 +825,7 @@
                                                 <color key="textColor" red="0.40000000000000002" green="0.30980392159999998" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ma0-f3-5vN" customClass="BorderedButton" customModule="CARt" customModuleProvider="target">
+                                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ma0-f3-5vN">
                                                 <frame key="frameInset" minX="269" minY="8" width="90" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal">
@@ -885,14 +886,16 @@
                     <size key="freeformSize" width="375" height="1100"/>
                     <connections>
                         <outlet property="btnCancel" destination="pCq-K2-jKX" id="KR5-Zc-czr"/>
-                        <outlet property="btnRefer" destination="ioG-jq-wp4" id="CLu-he-jP0"/>
+                        <outlet property="btnRefer" destination="ioG-jq-wp4" id="7Ph-6M-X79"/>
                         <outlet property="btnSend" destination="gt1-zu-wFw" id="62y-Em-fdl"/>
                         <outlet property="btnSurvey" destination="ZW6-Cl-YPx" id="bwY-ar-xjg"/>
+                        <outlet property="edComment" destination="uJb-dw-l1S" id="VP4-Td-aHN"/>
                         <outlet property="edEmail" destination="9JM-GV-eY4" id="sfz-Pa-NPl"/>
                         <outlet property="edHomeAddr" destination="xe3-qZ-Mdj" id="HLl-ce-11L"/>
                         <outlet property="edStoreAddr" destination="mtK-KL-kDf" id="b4Y-5g-yzt"/>
                         <outlet property="ivHome" destination="CYz-28-rwa" id="lU4-3V-nFe"/>
                         <outlet property="ivStore" destination="ExA-QL-z2H" id="9Ln-T0-eIC"/>
+                        <outlet property="scrollView" destination="XXM-jw-x0a" id="ER9-F7-wyD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vc-6p-KyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -908,7 +911,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YnO-uC-58S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YGa-Rl-uCu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fJC-2F-ZBI">
@@ -928,11 +931,11 @@
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDM-jJ-n5v">
-                                <frame key="frameInset" minY="76" width="375" height="700"/>
+                                <frame key="frameInset" minY="76" width="375" height="780"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhC-Rq-FvK">
-                                        <rect key="frame" x="0.0" y="8" width="375" height="700"/>
+                                        <rect key="frame" x="0.0" y="8" width="375" height="800"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Requesting Ride ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q6-yd-4uw">
@@ -1069,7 +1072,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="edCode2Edited:" destination="0Hb-Up-LRr" eventType="editingDidEnd" id="tjz-Y1-4PF"/>
+                                                    <action selector="edCode2Edited:" destination="0Hb-Up-LRr" eventType="editingChanged" id="Ivp-Uf-UIe"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pmQ-yc-tM9">
@@ -1086,6 +1089,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="edCode3Edited:" destination="0Hb-Up-LRr" eventType="editingDidEnd" id="6Zo-sn-VL3"/>
+                                                    <action selector="edCode3Edited:" destination="0Hb-Up-LRr" eventType="editingChanged" id="aJX-Pv-8wJ"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahw-Ea-FaG">
@@ -1132,6 +1136,9 @@
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="edCode6Edited:" destination="0Hb-Up-LRr" eventType="editingChanged" id="7mN-cg-Hki"/>
+                                                </connections>
                                             </textField>
                                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bz-WH-JSa" customClass="BorderedButton" customModule="CARt" customModuleProvider="target">
                                                 <frame key="frameInset" minX="48.09%" minY="629" width="140" height="60"/>
@@ -1169,7 +1176,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="800"/>
+                    <size key="freeformSize" width="375" height="850"/>
                     <connections>
                         <outlet property="btnFinished" destination="3Bz-WH-JSa" id="OVQ-cP-3i6"/>
                         <outlet property="edCode1" destination="epr-zt-oDE" id="ZAF-f3-RPI"/>
@@ -1189,11 +1196,12 @@
                         <outlet property="tvBarcodeInstr" destination="Iqd-rj-V2X" id="3sg-OX-15E"/>
                         <outlet property="tvEnterInstruct" destination="HHE-32-vM8" id="R7N-4v-97Y"/>
                         <outlet property="tvRequestTitle" destination="0q6-yd-4uw" id="ab8-v2-ZLe"/>
+                        <segue destination="rvv-f2-weQ" kind="presentation" identifier="confirmToReturnIdentifier" id="ufd-oi-LDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVc-Wy-Byf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3341.5999999999999" y="35.532233883058474"/>
+            <point key="canvasLocation" x="3340" y="148"/>
         </scene>
         <!--Address Setting-->
         <scene sceneID="NtC-TN-2c2">
@@ -1501,7 +1509,7 @@
                                 </connections>
                             </textField>
                             <button clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-XH-waA" customClass="BorderedButton" customModule="CARt" customModuleProvider="target">
-                                <frame key="frameInset" minX="49.47%" minY="248" width="280" height="60"/>
+                                <frame key="frameInset" minX="48.95%" minY="248" width="280" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1650,6 +1658,7 @@
         <image name="textfield_background" width="174" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ufd-oi-LDa"/>
         <segue reference="RWR-dB-muI"/>
         <segue reference="3kR-Qz-65a"/>
         <segue reference="m1G-0F-URY"/>
