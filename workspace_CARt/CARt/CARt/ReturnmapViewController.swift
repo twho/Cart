@@ -13,10 +13,8 @@ import CoreLocation
 class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var returnMapView: MKMapView!
-    @IBOutlet weak var btnConfirm: BorderedButton!
+    @IBOutlet weak var btnConfirmRide: BorderedButton!
     @IBOutlet weak var tvInfoDetails: UILabel!
-    @IBOutlet weak var tvInfoTitle: UILabel!
-    @IBOutlet weak var btnCancelRide: UIButton!
     
     var locationManager: CLLocationManager!
     var geocoder: CLGeocoder!
@@ -46,11 +44,9 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.startUpdatingLocation()
 //        self.returnMapView.showsUserLocation = true
         self.returnMapView.delegate = self
-        
-        self.btnCancelRide.alpha = 0.0
         self.tvInfoDetails.text = "Request your free ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
-        self.btnConfirm.setImage(imgConfirmClicked, for: .highlighted)
-        self.btnConfirm.setImage(imgConfirm, for: .normal)
+        self.btnConfirmRide.setImage(imgConfirmClicked, for: .highlighted)
+        self.btnConfirmRide.setImage(imgConfirm, for: .normal)
         drawRoute()
     }
 
@@ -112,30 +108,31 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     func fadeInContents(withDuration duration: TimeInterval = 2.0) {
         UIView.animate(withDuration: duration, animations: {
-            self.tvInfoTitle.alpha = 1.0
+//            self.tvInfoTitle.alpha = 1.0
             self.tvInfoDetails.alpha = 1.0
-            self.btnCancelRide.alpha = 1.0
+            self.btnConfirmRide.alpha = 1.0
         })
         startCounter()
     }
     
     func changeViewContent(withDuration duration: TimeInterval = 2.0) {
         UIView.animate(withDuration: duration, animations: {
-            self.btnConfirm.alpha = 0.0
-            self.tvInfoTitle.alpha = 0.0
+            self.btnConfirmRide.alpha = 0.0
+//            self.tvInfoTitle.alpha = 0.0
             self.tvInfoDetails.alpha = 0.0
         })
-        self.tvInfoTitle.text = "Ride Requested"
+//        self.tvInfoTitle.text = "Ride Requested"
         self.tvInfoDetails.text = "You'll received a confirmation text within 10 minutes with your driver's details."
         self.fadeInContents()
     }
     
     @IBAction func btnConfirmPressed(_ sender: BorderedButton) {
-        let alert = UIAlertController(title: "Terms and Conditions", message: "Please read these Terms and Conditions before using service operated CARt. \n \n Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.\n \n By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to request a ride from Meijer to your home.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
         }
-        let okAction = UIAlertAction(title: "Agree", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: "Request", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             self.changeViewContent()
+            self.performSegue(withIdentifier: "returnToEndIdentifier", sender: self)
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
@@ -168,7 +165,7 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = btnConfirm.tintColor
+        renderer.strokeColor = btnConfirmRide.tintColor
         return renderer
     }
     

@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var btnRequest: BorderedButton!
+    @IBOutlet weak var btnPrev: BorderedButton!
     @IBOutlet weak var edDestination: UITextField!
     @IBOutlet weak var ivDestination: UIImageView!
     @IBOutlet weak var tvDestination: UILabel!
@@ -32,9 +33,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var storeLng: Double = 0.0
     var storeAddr: String = ""
     var ifRouteDrawn: Bool = false
+    var currentPrice: Double = 0.0
     
     let imgRequestClicked = UIImage(named: "ic_request_click")! as UIImage
     let imgRequest = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
     
     struct addressKeys {
@@ -59,6 +63,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.mapView.delegate = self
         btnRequest.setImage(imgRequestClicked, for: .highlighted)
         btnRequest.setImage(imgRequest, for: .normal)
+        btnPrev.setImage(imgPrevClicked, for: .highlighted)
+        btnPrev.setImage(imgPrev, for: .normal)
         edDestination.leftViewMode = UITextFieldViewMode.always
         edDestination.leftView = ivDestination
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -122,12 +128,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    @IBAction func btnRequestPressed(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Terms and Conditions", message: "Please read these Terms and Conditions before using service operated CARt. \n \n Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.\n \n By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.", preferredStyle: UIAlertControllerStyle.alert)
+    @IBAction func btnRequestPressed(_ sender: BorderedButton) {
+        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to pay $\(currentPrice) at Meijer for your ride.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-//            print("Destructive")
+            //            print("Destructive")
         }
-        let okAction = UIAlertAction(title: "Agree", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: "Request", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             self.defaults.setValue(self.storeAddr, forKey: addressKeys.destAddressKey)
             self.defaults.setValue(self.storeLat, forKey: addressKeys.destAddressLat)
             self.defaults.setValue(self.storeLng, forKey: addressKeys.destAddressLng)
@@ -170,6 +176,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             guard let unwrappedResponse = response else { return }
             let distance = Double(round(100*(Double((response!.routes.first?.distance)!)/1609))/100)
             self.tvDestination.text = "The selected Meijer is \(distance) mi away. This trip will cost you $\(Double(round(10*(distance*1.55)/10))) - $\(Double(round(10*(distance*2.05)/10)))."
+            self.currentPrice = Double(round(10*(distance*2.05)/10))
             self.routes = []
             for route in unwrappedResponse.routes {
                 self.mapView.add(route.polyline)

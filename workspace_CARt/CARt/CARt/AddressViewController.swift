@@ -10,23 +10,27 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var tvInstrucTitle: UILabel!
-    @IBOutlet weak var tvInstruc: UILabel!
     @IBOutlet weak var edMyAddr: UITextField!
-    @IBOutlet weak var btnSet: BorderedButton!
+    @IBOutlet weak var btnShowMap: UIButton!
+    @IBOutlet weak var btnHideMap: UIButton!
+    @IBOutlet weak var btnPrev: BorderedButton!
+    @IBOutlet weak var btnNext: BorderedButton!
     
     var locationManager: CLLocationManager!
     var geocoder: CLGeocoder!
-    
-    let imgSetClicked = UIImage(named: "ic_finish_click")! as UIImage
-    let imgSet = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
-    let defaults = UserDefaults.standard
-    
     var lat: Double = 0.0
     var lng: Double = 0.0
+    
+    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
+    let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let defaults = UserDefaults.standard
+    
+    var ifMapShown: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,17 +42,21 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
-        
-        btnSet.setImage(imgSetClicked, for: .highlighted)
-        btnSet.setImage(imgSet, for: .normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.edMyAddr.delegate = self
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        btnPrev.setImage(imgPrevClicked, for: .highlighted)
+        btnPrev.setImage(imgPrev, for: .normal)
+        btnNext.setImage(imgNextClicked, for: .highlighted)
+        btnNext.setImage(imgNext, for: .normal)
+        self.mapView.isHidden = true
+        self.btnShowMap.isHidden = false
+        self.btnHideMap.isHidden = true
         self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     struct addressKeys {
@@ -57,11 +65,28 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         static let myAddressLng = "myAddressLng"
     }
     
-    @IBAction func btnSetPressed(_ sender: BorderedButton) {
-        defaults.setValue(edMyAddr.text, forKey: addressKeys.myAddressKey)
+    
+    @IBAction func btnNextClicked(_ sender: BorderedButton) {
+        defaults.setValue(self.edMyAddr.text, forKey: addressKeys.myAddressKey)
         defaults.setValue(lat, forKey: addressKeys.myAddressLat)
         defaults.setValue(lng, forKey: addressKeys.myAddressLng)
         defaults.synchronize()
+    }
+    
+    @IBAction func btnShowMapClicked(_ sender: UIButton) {
+        self.mapView.isHidden = false
+        self.btnShowMap.isHidden = true
+        self.btnHideMap.isHidden = false
+        self.btnNext.frame.origin.y = self.btnNext.frame.origin.y + 337
+        self.btnPrev.frame.origin.y = self.btnPrev.frame.origin.y + 337
+    }
+    
+    @IBAction func btnHideMapClicked(_ sender: UIButton) {
+        self.mapView.isHidden = true
+        self.btnShowMap.isHidden = false
+        self.btnHideMap.isHidden = true
+        self.btnNext.frame.origin.y = self.btnNext.frame.origin.y - 337
+        self.btnPrev.frame.origin.y = self.btnPrev.frame.origin.y - 337
     }
     
     //location delegate methods
@@ -93,6 +118,11 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Errors: ", error.localizedDescription)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func keyboardWillShow(notification: NSNotification) {

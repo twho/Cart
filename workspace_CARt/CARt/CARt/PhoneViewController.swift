@@ -13,8 +13,8 @@ class PhoneViewController: UIViewController {
     @IBOutlet weak var edPhone: UITextField!
     @IBOutlet weak var btnVerify: BorderedButton!
     
-    let imgVerifyClicked = UIImage(named: "ic_finish_click")! as UIImage
-    let imgVerify = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgVerifyClicked = UIImage(named: "ic_next_click")! as UIImage
+    let imgVerify = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
