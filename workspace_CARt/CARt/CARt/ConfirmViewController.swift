@@ -180,6 +180,19 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier: "confirmToReturnIdentifier", sender: self)
     }
     
+    @IBAction func btnCancel(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Are you sure you want to cancel the ride?", message: "By tapping yes, you will cancel the ride and return to home page.", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+            //            print("Destructive")
+        }
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            self.performSegue(withIdentifier: "confirmToHomeIdentifier", sender: self)
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

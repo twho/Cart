@@ -129,7 +129,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func btnRequestPressed(_ sender: BorderedButton) {
-        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to pay $\(currentPrice) at Meijer for your ride.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to pay $10 at Meijer for your ride.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
             //            print("Destructive")
         }
@@ -175,7 +175,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         directions.calculate { [unowned self] response, error in
             guard let unwrappedResponse = response else { return }
             let distance = Double(round(100*(Double((response!.routes.first?.distance)!)/1609))/100)
-            self.tvDestination.text = "The selected Meijer is \(distance) mi away. This trip will cost you $\(Double(round(10*(distance*1.55)/10))) - $\(Double(round(10*(distance*2.05)/10)))."
+            self.tvDestination.text = "The selected Meijer is \(distance) mi away. This trip will cost you $10."
             self.currentPrice = Double(round(10*(distance*2.05)/10))
             self.routes = []
             for route in unwrappedResponse.routes {

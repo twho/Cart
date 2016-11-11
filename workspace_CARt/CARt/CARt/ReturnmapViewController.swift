@@ -44,7 +44,7 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.startUpdatingLocation()
 //        self.returnMapView.showsUserLocation = true
         self.returnMapView.delegate = self
-        self.tvInfoDetails.text = "Request your free ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
+        self.tvInfoDetails.text = "Request your ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
         self.btnConfirmRide.setImage(imgConfirmClicked, for: .highlighted)
         self.btnConfirmRide.setImage(imgConfirm, for: .normal)
         drawRoute()
