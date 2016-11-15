@@ -77,16 +77,16 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.mapView.isHidden = false
         self.btnShowMap.isHidden = true
         self.btnHideMap.isHidden = false
-        self.btnNext.frame.origin.y = self.btnNext.frame.origin.y + 337
-        self.btnPrev.frame.origin.y = self.btnPrev.frame.origin.y + 337
+        self.btnNext.frame.origin.y = self.btnNext.frame.origin.y + 345
+        self.btnPrev.frame.origin.y = self.btnPrev.frame.origin.y + 345
     }
     
     @IBAction func btnHideMapClicked(_ sender: UIButton) {
         self.mapView.isHidden = true
         self.btnShowMap.isHidden = false
         self.btnHideMap.isHidden = true
-        self.btnNext.frame.origin.y = self.btnNext.frame.origin.y - 337
-        self.btnPrev.frame.origin.y = self.btnPrev.frame.origin.y - 337
+        self.btnNext.frame.origin.y = self.btnNext.frame.origin.y - 345
+        self.btnPrev.frame.origin.y = self.btnPrev.frame.origin.y - 345
     }
     
     //location delegate methods

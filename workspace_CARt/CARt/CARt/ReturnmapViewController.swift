@@ -172,8 +172,8 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is PinAnnotation {
             let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
-            
-            pinAnnotationView.pinTintColor = .green
+            //var color = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
+            pinAnnotationView.pinTintColor = UIColor(red: 108, green: 149, blue: 182)
             pinAnnotationView.isDraggable = true
             pinAnnotationView.canShowCallout = true
             pinAnnotationView.animatesDrop = true

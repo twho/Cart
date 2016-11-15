@@ -232,7 +232,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {

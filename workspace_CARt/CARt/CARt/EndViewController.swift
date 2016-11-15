@@ -31,6 +31,7 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     let imgSurveyClicked = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.white)!)! as UIImage
     let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
+    var ifKeyboardShown: Bool = false
     
     struct addressKeys {
         static let myAddressKey = "myAddress"
@@ -55,11 +56,15 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         edStoreAddr.leftViewMode = UITextFieldViewMode.always
         edStoreAddr.leftView = ivStore
         edStoreAddr.text = defaults.string(forKey: addressKeys.destAddressKey)
+        edStoreAddr.isEnabled = false
         edHomeAddr.leftViewMode = UITextFieldViewMode.always
         edHomeAddr.leftView = ivHome
         edHomeAddr.text = defaults.string(forKey: addressKeys.myAddressKey)
+        edHomeAddr.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        edComment.layer.borderWidth = 0.5
+        edComment.layer.borderColor = UIColor.lightGray.cgColor
         self.scrollView.contentSize.height = 1450
         self.edEmail.delegate = self
         self.edComment.delegate = self
@@ -92,7 +97,10 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height
+            if (!ifKeyboardShown) {
+                self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height
+                ifKeyboardShown = true
+            }
         }
         
     }
@@ -100,7 +108,10 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y = self.view.frame.origin.y + keyboardSize.height
+                if (ifKeyboardShown) {
+                    self.view.frame.origin.y = self.view.frame.origin.y + keyboardSize.height
+                    ifKeyboardShown = false
+                }
             }
         }
     }

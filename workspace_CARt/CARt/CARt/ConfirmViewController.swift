@@ -37,6 +37,7 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     var timer = Timer()
     var timerSlow = Timer()
     var ifToEditCode1: Bool = false
+    var ifKeyboardShown: Bool = false
     var blinking = false
     
     struct addressKeys {
@@ -62,9 +63,11 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
         edHome.leftViewMode = UITextFieldViewMode.always
         edHome.leftView = ivHome
         edHome.text = defaults.string(forKey: addressKeys.myAddressKey)
+        edHome.isEnabled = false
         edDestination.leftViewMode = UITextFieldViewMode.always
         edDestination.leftView = ivDestination
         edDestination.text = defaults.string(forKey: addressKeys.destAddressKey)
+        edDestination.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         btnFinished.setImage(imgFinishClicked, for: .highlighted)
@@ -152,32 +155,30 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func edCode1Edited(_ sender: UITextField) {
-        edCode1.endEditing(true)
         edCode2.becomeFirstResponder()
     }
     
     @IBAction func edCode2Edited(_ sender: UITextField) {
-        edCode2.endEditing(true)
         edCode3.becomeFirstResponder()
     }
     
     @IBAction func edCode3Edited(_ sender: UITextField) {
-        edCode3.endEditing(true)
         edCode4.becomeFirstResponder()
     }
     
     @IBAction func edCode4Edited(_ sender: UITextField) {
-        edCode4.endEditing(true)
         edCode5.becomeFirstResponder()
     }
     
     @IBAction func edCode5Edited(_ sender: UITextField) {
-        edCode5.endEditing(true)
         edCode6.becomeFirstResponder()
     }
     
     @IBAction func edCode6Edited(_ sender: UITextField) {
-        self.performSegue(withIdentifier: "confirmToReturnIdentifier", sender: self)
+//        self.performSegue(withIdentifier: "confirmToReturnIdentifier", seder: self)
+        edCode6.endEditing(true)
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        self.scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     @IBAction func btnCancel(_ sender: UIButton) {
@@ -200,14 +201,20 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height - 45
+            if !ifKeyboardShown {
+                self.view.frame.origin.y = self.view.frame.origin.y - keyboardSize.height - 45
+                ifKeyboardShown = true
+            }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y = self.view.frame.origin.y + keyboardSize.height + 45
+                if ifKeyboardShown {
+                    self.view.frame.origin.y = self.view.frame.origin.y + keyboardSize.height + 45
+                    ifKeyboardShown = false
+                }
             }
         }
     }
