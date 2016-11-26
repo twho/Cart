@@ -18,11 +18,11 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edFirstName: UITextField!
     @IBOutlet weak var edLastName: UITextField!
     @IBOutlet weak var checkbox: M13Checkbox!
-    @IBOutlet weak var edBdYear: UITextField!
-    @IBOutlet weak var edBdMonth: UITextField!
-    @IBOutlet weak var edBdDay: UITextField!
+    @IBOutlet weak var edBirthday: UITextField!
     @IBOutlet weak var tvAgeMsg: UILabel!
     @IBOutlet weak var tvTitle: UILabel!
+    
+    var popDatePicker: PopDatePicker?
     
     //load image
     let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
@@ -33,18 +33,18 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        popDatePicker = PopDatePicker(forTextField: edBirthday)
         btnNext.setImage(imgNextClicked, for: .highlighted)
         btnNext.setImage(imgNext, for: .normal)
         btnPrev.setImage(imgPrevClicked, for: .highlighted)
         btnPrev.setImage(imgPrev, for: .normal)
         self.edFirstName.delegate = self
         self.edLastName.delegate = self
-        self.edBdYear.delegate = self
-        self.edBdMonth.delegate = self
-        self.edBdDay.delegate = self
-//        btnNext.isEnabled = false
+        self.edBirthday.delegate = self
         self.edFirstName.becomeFirstResponder()
-//        self.checkbox.stateChangeAnimation = M13Checkbox.Animation.fill
+        tvAgeMsg.textColor = tvTitle.textColor
+        tvAgeMsg.text = "You must be at least 18 yrs old to ride."
+        checkbox.setCheckState(M13Checkbox.CheckState.unchecked, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,45 +52,43 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func yearTextWatcher(_ sender: UITextField) {
-        let bdYearStr = sender.text! as String
-        let bdYear = Int(sender.text!)
-        if bdYearStr.characters.count == 4 {
-            if bdYear! < 1997 {
-                tvAgeMsg.textColor = btnNext.tintColor
-                tvAgeMsg.text = "Yes, I am 18 yrs old or older."
-                checkbox.tintColor = btnNext.tintColor
-                checkbox.setCheckState(M13Checkbox.CheckState.checked, animated: true)
-                 edBdMonth.becomeFirstResponder()
-            } else {
-                tvAgeMsg.textColor = UIColor.red
-                checkbox.tintColor = UIColor.red
-                checkbox.setCheckState(M13Checkbox.CheckState.mixed, animated: true)
-            }
-        } else {
-            tvAgeMsg.textColor = tvTitle.textColor
-            tvAgeMsg.text = "You must be at least 18 yrs old to ride."
-            checkbox.setCheckState(M13Checkbox.CheckState.unchecked, animated: true)
-        }
+    @IBAction func btnNextPressed(_ sender: BorderedButton) {
+        self.performSegue(withIdentifier: "ContactToAddressIdentifier", sender: self)
     }
-    
-    @IBAction func monthTextWatcher(_ sender: UITextField) {
-        let bdMonthStr = sender.text! as String
-        let bdMonth = Int(sender.text!)
-        if bdMonthStr.characters.count == 2 {
-            if bdMonth! > 0 && bdMonth! < 13 {
-                self.edBdDay.becomeFirstResponder()
+        
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if (textField == self.edBirthday) {
+            edBirthday.resignFirstResponder()
+            view.endEditing(true)
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            let initDate : Date? = formatter.date(from: "Jan 09, 1980")
+            
+            let dataChangedCallback : PopDatePicker.PopDatePickerCallback = { (newDate : Date, forTextField : UITextField) -> () in
+                // here we don't use self (no retain cycle)
+                let date = Date()
+                forTextField.text = formatter.string(from: newDate)
+                let yearDiff = Calendar.current.dateComponents([.year], from: newDate, to: date as Date).year ?? 0
+                if(yearDiff >= 18){
+                    self.tvAgeMsg.textColor = self.btnNext.tintColor
+                    self.tvAgeMsg.text = "Yes, I am 18 yrs old or older."
+                    self.checkbox.tintColor = self.btnNext.tintColor
+                    self.checkbox.setCheckState(M13Checkbox.CheckState.checked, animated: true)
+                } else {
+                    self.checkbox.tintColor = UIColor.red
+                    self.checkbox.setCheckState(M13Checkbox.CheckState.mixed, animated: true)
+                    self.tvAgeMsg.text = "You must be at least 18 yrs old to ride."
+                    self.tvAgeMsg.textColor = UIColor.red
+                    self.checkbox.tintColor = UIColor.red
+                    self.checkbox.setCheckState(M13Checkbox.CheckState.mixed, animated: true)
+                }
             }
+            popDatePicker!.pick(self, initDate: initDate, dataChanged: dataChangedCallback)
+            return false
         }
-    }
-    
-    @IBAction func dayTextWatcher(_ sender: UITextField) {
-        let bdMonthStr = sender.text! as String
-        let bdMonth = Int(sender.text!)
-        if bdMonthStr.characters.count == 2 {
-            if bdMonth! > 0 && bdMonth! < 32 {
-                btnNext.isEnabled = true
-            }
+        else {
+            return true
         }
     }
     
@@ -98,11 +96,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
         if textField == self.edFirstName {
             self.edLastName.becomeFirstResponder()
         } else if textField == self.edLastName{
-            self.edBdYear.becomeFirstResponder()
-        } else if textField == self.edBdYear{
-            self.edBdMonth.becomeFirstResponder()
-        } else if textField == self.edBdMonth{
-            self.edBdDay.becomeFirstResponder()
+            self.edBirthday.becomeFirstResponder()
         }
         return true
     }

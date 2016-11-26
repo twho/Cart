@@ -10,6 +10,9 @@ import UIKit
 
 class EndViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var tvRequestTitle: UILabel!
+    @IBOutlet weak var tvRequestDetails: UILabel!
+    @IBOutlet weak var tvRequestInfo: UILabel!
     @IBOutlet weak var edEmail: UITextField!
     @IBOutlet weak var edComment: UITextField!
     @IBOutlet weak var btnCancel: BorderedButton!
@@ -31,7 +34,13 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     let imgSurveyClicked = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.white)!)! as UIImage
     let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
+    
     var ifKeyboardShown: Bool = false
+    var time: Float = 0.0
+    var timeSlow: Float = 0.0
+    var timer = Timer()
+    var timerSlow = Timer()
+    var blinking = false
     
     struct addressKeys {
         static let myAddressKey = "myAddress"
@@ -69,10 +78,51 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         self.edEmail.delegate = self
         self.edComment.delegate = self
         self.hideKeyboardWhenTappedAround()
+        startCounter()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func startCounter(){
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:#selector(ConfirmViewController.setProgress), userInfo: nil, repeats: true)
+        timerSlow = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector:#selector(ConfirmViewController.blinkingTitle), userInfo: nil, repeats: true)
+    }
+    
+    func setProgress() {
+        time += 0.1
+        if time >= 10 && time < 14 {
+            tvRequestTitle.text = "Ride Requested"
+        } else if (time >= 14){
+            tvRequestTitle.text = "Driver Details"
+            edHomeAddr.isHidden = true
+            edStoreAddr.isHidden = true
+            tvRequestInfo.isHidden = true
+            tvRequestDetails.isHidden = false
+        }
+    }
+    
+    func blinkingTitle(){
+        timeSlow += 1
+        if timeSlow <= 6 {
+            blinkingLabel()
+        }
+    }
+    
+    func blinkingLabel(withDuration duration: TimeInterval = 1.5){
+        if !blinking{
+            self.tvRequestTitle.alpha = 1.0
+            UIView.animate(withDuration: duration, animations: {
+                self.tvRequestTitle.alpha = 0.0
+            })
+            blinking = true
+        } else {
+            UIView.animate(withDuration: duration, animations: {
+                self.tvRequestTitle.alpha = 1.0
+            })
+            blinking = false
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -102,7 +152,6 @@ class EndViewController: UIViewController, UITextFieldDelegate {
                 ifKeyboardShown = true
             }
         }
-        
     }
     
     func keyboardWillHide(notification: NSNotification) {

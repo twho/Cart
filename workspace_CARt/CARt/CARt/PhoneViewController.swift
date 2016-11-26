@@ -13,15 +13,20 @@ class PhoneViewController: UIViewController {
     @IBOutlet weak var edPhone: UITextField!
     @IBOutlet weak var btnVerify: BorderedButton!
     
+    let defaults = UserDefaults.standard
     let imgVerifyClicked = UIImage(named: "ic_next_click")! as UIImage
     let imgVerify = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if(nil != defaults.value(forKey: "MyPhone")){
+//            self.edPhone.text = defaults.string(forKey: "MyPhone")!
+//            checkPhoneNumber(textField: edPhone)
+//        }
         btnVerify.setImage(imgVerifyClicked, for: .highlighted)
         btnVerify.setImage(imgVerify, for: .normal)
-//        btnVerify.isEnabled = false
+        btnVerify.isHidden = true
         self.edPhone.becomeFirstResponder()
     }
 
@@ -52,10 +57,21 @@ class PhoneViewController: UIViewController {
             let index = numStr.index(numStr.startIndex, offsetBy: 3)
             let indexBack = numStr.index(numStr.endIndex, offsetBy: -1)
             textField.text = "(" + numStr.substring(to: index) + ") " + numStr.substring(with: index..<indexBack) + "-" + numStr.substring(from: indexBack)
-        case 10:
-            btnVerify.isEnabled = true
         default:
             break
+        }
+        checkPhoneNumber(textField: edPhone)
+    }
+    
+    func checkPhoneNumber(textField: UITextField){
+        let phoneStr = textField.text! as String
+        let numStr = phoneStr.components(separatedBy:
+            NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+        if(numStr.characters.count == 10){
+            defaults.setValue(self.edPhone.text, forKey: "MyPhone")
+            btnVerify.isHidden = false
+        } else {
+            btnVerify.isHidden = true
         }
     }
 }

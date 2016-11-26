@@ -7,6 +7,7 @@ target 'CARt' do
 
   # Pods for CARt
   pod 'M13Checkbox'
+  pod 'DropDown'
 
 
   target 'CARtTests' do

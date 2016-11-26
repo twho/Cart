@@ -16,9 +16,13 @@
 		27097E0A1DB4736E00F3D1DC /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E091DB4736E00F3D1DC /* BorderedButton.swift */; };
 		27097E0E1DB4766700F3D1DC /* ColoredUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */; };
 		270CAD371DD3C4CF0047B511 /* TextVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270CAD361DD3C4CF0047B511 /* TextVerifyViewController.swift */; };
+		272817651DE00855004ED027 /* DropDownListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272817641DE00855004ED027 /* DropDownListCell.xib */; };
 		27602BA51DB8184C00F1BB36 /* ReturnmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27602BA41DB8184C00F1BB36 /* ReturnmapViewController.swift */; };
+		277661661DE509A70062F668 /* PopDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277661641DE509A70062F668 /* PopDateViewController.swift */; };
+		277661671DE509A70062F668 /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277661651DE509A70062F668 /* PopDateViewController.xib */; };
 		27787FD31DB858BF002D7CE0 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27787FD21DB858BF002D7CE0 /* AddressViewController.swift */; };
 		27787FD61DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */; };
+		278159A21DE77371006E05EF /* PopDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278159A11DE77371006E05EF /* PopDatePicker.swift */; };
 		278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278738F41DBFEE060047EE32 /* PhoneViewController.swift */; };
 		27C0A5C11DD11BC900B9FB2B /* imageColorFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */; };
 		27D2A5AB1DD657D600F8AD15 /* UIColorByHexRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */; };
@@ -26,6 +30,7 @@
 		27DB36181DB4944E00753ED5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB36171DB4944E00753ED5 /* ContactViewController.swift */; };
 		27E336891DB98E5B00DB9D9A /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */; };
 		27E3368B1DB99F0200DB9D9A /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E3368A1DB99F0200DB9D9A /* EndViewController.swift */; };
+		27E43CAB1DE0070200005E62 /* DropDownListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E43CA91DE0070200005E62 /* DropDownListCell.swift */; };
 		27F2D1791DB528B6003CF00D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2D1781DB528B6003CF00D /* MapViewController.swift */; };
 		27F2D17B1DB55841003CF00D /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2D17A1DB55841003CF00D /* ConfirmViewController.swift */; };
 		27F2D17D1DB55D4C003CF00D /* EntercodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2D17C1DB55D4C003CF00D /* EntercodeViewController.swift */; };
@@ -68,9 +73,13 @@
 		27097E091DB4736E00F3D1DC /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredUIImage.swift; sourceTree = "<group>"; };
 		270CAD361DD3C4CF0047B511 /* TextVerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextVerifyViewController.swift; sourceTree = "<group>"; };
+		272817641DE00855004ED027 /* DropDownListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownListCell.xib; sourceTree = "<group>"; };
 		27602BA41DB8184C00F1BB36 /* ReturnmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnmapViewController.swift; sourceTree = "<group>"; };
+		277661641DE509A70062F668 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
+		277661651DE509A70062F668 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
 		27787FD21DB858BF002D7CE0 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HideKeyboardByTapViewController.swift; path = ../HideKeyboardByTapViewController.swift; sourceTree = "<group>"; };
+		278159A11DE77371006E05EF /* PopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDatePicker.swift; sourceTree = "<group>"; };
 		278738F41DBFEE060047EE32 /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageColorFilter.swift; sourceTree = "<group>"; };
 		27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorByHexRGB.swift; sourceTree = "<group>"; };
@@ -78,6 +87,7 @@
 		27DB36171DB4944E00753ED5 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		27E3368A1DB99F0200DB9D9A /* EndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
+		27E43CA91DE0070200005E62 /* DropDownListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownListCell.swift; sourceTree = "<group>"; };
 		27F2D1781DB528B6003CF00D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		27F2D17A1DB55841003CF00D /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		27F2D17C1DB55D4C003CF00D /* EntercodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntercodeViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +156,7 @@
 		27097DDA1DB4655900F3D1DC /* CARt */ = {
 			isa = PBXGroup;
 			children = (
+				278D604A1DDFFA8D003EBF70 /* Objects */,
 				27787FD41DB85AC2002D7CE0 /* Extensions */,
 				27787FD11DB85318002D7CE0 /* Views */,
 				27DB36131DB487E800753ED5 /* Assets.xcassets */,
@@ -195,15 +206,27 @@
 		27787FD41DB85AC2002D7CE0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				27097E091DB4736E00F3D1DC /* BorderedButton.swift */,
 				27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */,
 				27F2D17E1DB57403003CF00D /* TextFieldMaxLengths.swift */,
 				27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */,
-				27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */,
 				27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */,
 				27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		278D604A1DDFFA8D003EBF70 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				27097E091DB4736E00F3D1DC /* BorderedButton.swift */,
+				27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */,
+				27E43CA91DE0070200005E62 /* DropDownListCell.swift */,
+				272817641DE00855004ED027 /* DropDownListCell.xib */,
+				277661641DE509A70062F668 /* PopDateViewController.swift */,
+				277661651DE509A70062F668 /* PopDateViewController.xib */,
+				278159A11DE77371006E05EF /* PopDatePicker.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 		57C5607240F479367778B502 /* Pods */ = {
@@ -349,6 +372,8 @@
 				27097DE61DB4655900F3D1DC /* LaunchScreen.storyboard in Resources */,
 				27DB36141DB487E800753ED5 /* Assets.xcassets in Resources */,
 				27097DE11DB4655900F3D1DC /* Main.storyboard in Resources */,
+				272817651DE00855004ED027 /* DropDownListCell.xib in Resources */,
+				277661671DE509A70062F668 /* PopDateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +542,8 @@
 				27097E0E1DB4766700F3D1DC /* ColoredUIImage.swift in Sources */,
 				27D2A5AB1DD657D600F8AD15 /* UIColorByHexRGB.swift in Sources */,
 				27F2D1791DB528B6003CF00D /* MapViewController.swift in Sources */,
+				278159A21DE77371006E05EF /* PopDatePicker.swift in Sources */,
+				277661661DE509A70062F668 /* PopDateViewController.swift in Sources */,
 				27E336891DB98E5B00DB9D9A /* PinAnnotation.swift in Sources */,
 				270CAD371DD3C4CF0047B511 /* TextVerifyViewController.swift in Sources */,
 				278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */,
@@ -528,6 +555,7 @@
 				27E3368B1DB99F0200DB9D9A /* EndViewController.swift in Sources */,
 				27787FD31DB858BF002D7CE0 /* AddressViewController.swift in Sources */,
 				27F2D17B1DB55841003CF00D /* ConfirmViewController.swift in Sources */,
+				27E43CAB1DE0070200005E62 /* DropDownListCell.swift in Sources */,
 				27DB36181DB4944E00753ED5 /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +716,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -703,6 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
