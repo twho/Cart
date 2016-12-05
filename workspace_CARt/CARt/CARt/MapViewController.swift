@@ -69,6 +69,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
+        //remember to turn off in final 
+        self.mapView.isUserInteractionEnabled = false
         btnRequest.setImage(imgRequestClicked, for: .highlighted)
         btnRequest.setImage(imgRequest, for: .normal)
         btnPrev.setImage(imgPrevClicked, for: .highlighted)

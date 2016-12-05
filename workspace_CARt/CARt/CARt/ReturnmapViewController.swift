@@ -42,8 +42,9 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
-//        self.returnMapView.showsUserLocation = true
         self.returnMapView.delegate = self
+        //remember to turn off in the final
+        self.returnMapView.isUserInteractionEnabled = false
         self.tvInfoDetails.text = "Request your ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
         self.btnConfirmRide.setImage(imgConfirmClicked, for: .highlighted)
         self.btnConfirmRide.setImage(imgConfirm, for: .normal)
