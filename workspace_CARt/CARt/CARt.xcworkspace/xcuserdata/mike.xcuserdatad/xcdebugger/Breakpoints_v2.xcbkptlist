@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CARt/EndViewController.swift"
-            timestampString = "501192559.255132"
+            timestampString = "502747858.552996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "blinkingTitle()"
             landmarkType = "7">
             <Locations>

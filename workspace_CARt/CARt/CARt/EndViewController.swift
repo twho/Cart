@@ -24,6 +24,11 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ivStore: UIImageView!
     @IBOutlet weak var ivHome: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var rateStar1: UIButton!
+    @IBOutlet weak var rateStar2: UIButton!
+    @IBOutlet weak var rateStar3: UIButton!
+    @IBOutlet weak var rateStar4: UIButton!
+    @IBOutlet weak var rateStar5: UIButton!
     
     let imgCancelClicked = UIImage(named: "ic_cancel_click")
     let imgCancel = UIImage(named: "ic_cancel")
@@ -33,6 +38,8 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let imgSurveyClicked = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.white)!)! as UIImage
     let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgStar = UIImage(named: "ic_star")
+    let imgStarClicked = UIImage(named: "ic_star_click")
     let defaults = UserDefaults.standard
     
     var ifKeyboardShown: Bool = false
@@ -40,6 +47,7 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     var timeSlow: Float = 0.0
     var timer = Timer()
     var timerSlow = Timer()
+    var starRow: [UIButton] = []
     var blinking = false
     
     struct addressKeys {
@@ -74,10 +82,11 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         edComment.layer.borderWidth = 0.5
         edComment.layer.borderColor = UIColor.lightGray.cgColor
-        self.scrollView.contentSize.height = 1450
+        self.scrollView.contentSize.height = 1730
         self.edEmail.delegate = self
         self.edComment.delegate = self
         self.hideKeyboardWhenTappedAround()
+        self.starRow = [rateStar1, rateStar2, rateStar3, rateStar4, rateStar5]
         startCounter()
     }
 
@@ -129,6 +138,51 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+    
+    func setAllStarEmpty(){
+        for star in starRow {
+            star.setImage(imgStar, for: .normal)
+            star.setImage(imgStar, for: .highlighted)
+        }
+    }
+    
+    @IBAction func star1Clicked(_ sender: UIButton) {
+        setAllStarEmpty()
+        starRow[0].setImage(imgStarClicked, for: .normal)
+        starRow[0].setImage(imgStarClicked, for: .highlighted)
+    }
+    
+    @IBAction func star2Clicked(_ sender: UIButton) {
+        setAllStarEmpty()
+        for i in 0...1 {
+            starRow[i].setImage(imgStarClicked, for: .normal)
+            starRow[i].setImage(imgStarClicked, for: .highlighted)
+        }
+    }
+    
+    @IBAction func star3Clicked(_ sender: UIButton) {
+        setAllStarEmpty()
+        for i in 0...2 {
+            starRow[i].setImage(imgStarClicked, for: .normal)
+            starRow[i].setImage(imgStarClicked, for: .highlighted)
+        }
+    }
+    
+    @IBAction func star4Clicked(_ sender: UIButton) {
+        setAllStarEmpty()
+        for i in 0...3 {
+            starRow[i].setImage(imgStarClicked, for: .normal)
+            starRow[i].setImage(imgStarClicked, for: .highlighted)
+        }
+    }
+    
+    @IBAction func star5Clicked(_ sender: UIButton) {
+        for star in starRow {
+            star.setImage(imgStarClicked, for: .normal)
+            star.setImage(imgStarClicked, for: .highlighted)
+        }
+    }
+    
     
     @IBAction func btnCancelPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Are you sure you want to cancel the ride?", message: "By tapping yes, you will cancel the ride and return to home page.", preferredStyle: UIAlertControllerStyle.alert)

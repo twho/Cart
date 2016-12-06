@@ -128,16 +128,17 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
     
     @IBAction func btnRequestPressed(_ sender: BorderedButton) {
-        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to request a ride from Meijer to your home.", preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-        }
-        let okAction = UIAlertAction(title: "Request", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            self.changeViewContent()
-            self.performSegue(withIdentifier: "returnToEndIdentifier", sender: self)
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "returnToEndIdentifier", sender: self)
+//        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to request a ride from Meijer to your home.", preferredStyle: UIAlertControllerStyle.alert)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+//        }
+//        let okAction = UIAlertAction(title: "Request", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+//            self.changeViewContent()
+//            self.performSegue(withIdentifier: "returnToEndIdentifier", sender: self)
+//        }
+//        alert.addAction(cancelAction)
+//        alert.addAction(okAction)
+//        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnCancelPressed(_ sender: AnyObject) {

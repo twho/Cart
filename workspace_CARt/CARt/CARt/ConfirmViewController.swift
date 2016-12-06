@@ -91,10 +91,10 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     func setProgress() {
         time += 0.1
         progressBar.progress = (time / 3)
-        if time >= 3 {
+        if time >= 0.1 {
             showBarcode()
         }
-        if time >= 3 && time < 5 {
+        if time >= 0.1 && time < 1 {
             tvRequestTitle.text = "Ride Requested"
             tvRequestTitle.textColor = tvBarcodeInstr.textColor
         } else if (time >= 14){

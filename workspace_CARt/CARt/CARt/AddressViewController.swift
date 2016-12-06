@@ -40,7 +40,7 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.scrollView.contentSize.height = 750
+        self.scrollView.contentSize.height = 730
         self.locationManager = CLLocationManager()
         self.geocoder = CLGeocoder()
         self.locationManager.delegate = self
@@ -58,11 +58,14 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.btnShowMap.isHidden = false
         self.btnHideMap.isHidden = true
         self.hideKeyboardWhenTappedAround()
+        self.edState.isEnabled = false
         edAddrList = [edAddress, edCity, edState, edZIPcode]
         for textField in edAddrList {
             textField.layer.borderWidth = 1.0
             textField.layer.borderColor = UIColor.lightGray.cgColor
         }
+        self.edState.layer.borderWidth = 1.0
+        self.edState.layer.borderColor = UIColor.white.cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,7 +95,7 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     
     @IBAction func edStateWatcher(_ sender: UITextField) {
         self.edState.layer.borderWidth = 1.0
-        self.edState.layer.borderColor = UIColor.lightGray.cgColor
+        self.edState.layer.borderColor = UIColor.white.cgColor
     }
     
     
@@ -157,9 +160,9 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             
             if (placemarks?.count)! > 0 {
                 let pm = (placemarks?[0])! as CLPlacemark
-                self.edCity.text = pm.locality!
+//                self.edCity.text = pm.locality!
                 self.edState.text = pm.administrativeArea!
-                self.edZIPcode.text = pm.postalCode!
+//                self.edZIPcode.text = pm.postalCode!
             }
             else {
                 print("Problem with the data received from geocoder")
