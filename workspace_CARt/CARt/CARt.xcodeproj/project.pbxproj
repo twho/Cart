@@ -31,6 +31,7 @@
 		27E336891DB98E5B00DB9D9A /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */; };
 		27E3368B1DB99F0200DB9D9A /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E3368A1DB99F0200DB9D9A /* EndViewController.swift */; };
 		27E43CAB1DE0070200005E62 /* DropDownListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E43CA91DE0070200005E62 /* DropDownListCell.swift */; };
+		27E61D131DF679F30073EE63 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E61D121DF679F30073EE63 /* WebViewController.swift */; };
 		27F2D1791DB528B6003CF00D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2D1781DB528B6003CF00D /* MapViewController.swift */; };
 		27F2D17B1DB55841003CF00D /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2D17A1DB55841003CF00D /* ConfirmViewController.swift */; };
 		27F2D17D1DB55D4C003CF00D /* EntercodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2D17C1DB55D4C003CF00D /* EntercodeViewController.swift */; };
@@ -88,6 +89,7 @@
 		27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		27E3368A1DB99F0200DB9D9A /* EndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		27E43CA91DE0070200005E62 /* DropDownListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownListCell.swift; sourceTree = "<group>"; };
+		27E61D121DF679F30073EE63 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		27F2D1781DB528B6003CF00D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		27F2D17A1DB55841003CF00D /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		27F2D17C1DB55D4C003CF00D /* EntercodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntercodeViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				27E3368A1DB99F0200DB9D9A /* EndViewController.swift */,
 				278738F41DBFEE060047EE32 /* PhoneViewController.swift */,
 				270CAD361DD3C4CF0047B511 /* TextVerifyViewController.swift */,
+				27E61D121DF679F30073EE63 /* WebViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -329,7 +332,7 @@
 				TargetAttributes = {
 					27097DD71DB4655900F3D1DC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = Y8SQE6629N;
+						DevelopmentTeam = 588Y89GTAL;
 						ProvisioningStyle = Automatic;
 					};
 					27097DEB1DB4655900F3D1DC = {
@@ -537,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27F2D17F1DB57403003CF00D /* TextFieldMaxLengths.swift in Sources */,
+				27E61D131DF679F30073EE63 /* WebViewController.swift in Sources */,
 				27F2D17D1DB55D4C003CF00D /* EntercodeViewController.swift in Sources */,
 				27787FD61DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift in Sources */,
 				27097E0E1DB4766700F3D1DC /* ColoredUIImage.swift in Sources */,
@@ -710,7 +714,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y8SQE6629N;
+				DEVELOPMENT_TEAM = 588Y89GTAL;
 				INFOPLIST_FILE = CARt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARt;
@@ -726,7 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y8SQE6629N;
+				DEVELOPMENT_TEAM = 588Y89GTAL;
 				INFOPLIST_FILE = CARt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARt;

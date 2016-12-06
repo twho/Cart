@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ngF-Dp-8MY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Web View Controller-->
+        <scene sceneID="ifY-Im-zvo">
+            <objects>
+                <viewController id="ngF-Dp-8MY" customClass="WebViewController" customModule="CARt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ELz-Hl-GHb"/>
+                        <viewControllerLayoutGuide type="bottom" id="gv6-25-BdL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R2z-bF-9dl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="       Search or enter website name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pB4-BX-kw0">
+                                <rect key="frame" x="16" y="28" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                <connections>
+                                    <action selector="edFocused:" destination="ngF-Dp-8MY" eventType="editingDidBegin" id="eg2-rW-Bjc"/>
+                                    <action selector="startTyping:" destination="ngF-Dp-8MY" eventType="editingChanged" id="TP1-ZF-tr0"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3bu-a9-0EE">
+                                <rect key="frame" x="0.0" y="66" width="375" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="safari_simulate" translatesAutoresizingMaskIntoConstraints="NO" id="2vy-cb-2cW">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHr-34-OmC">
+                                <rect key="frame" x="25" y="31" width="24" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ic_search"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnSearch" destination="fHr-34-OmC" id="Oq9-MK-7It"/>
+                        <outlet property="edWebUrl" destination="pB4-BX-kw0" id="gmh-fB-dE5"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="WebToHomeIdentifier" id="qPi-F8-2iI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCl-Iv-yQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-679.20000000000005" y="36.431784107946029"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -1793,18 +1845,20 @@
         <image name="ic_refer" width="48" height="48"/>
         <image name="ic_request" width="48" height="48"/>
         <image name="ic_returnhome" width="48" height="48"/>
+        <image name="ic_search" width="37" height="37"/>
         <image name="ic_send" width="48" height="48"/>
         <image name="ic_survey" width="32" height="32"/>
         <image name="logo" width="660" height="255"/>
+        <image name="safari_simulate" width="756" height="1212"/>
         <image name="sample_barcode" width="1280" height="889"/>
         <image name="textfield_background" width="174" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Kl-Nb-NLc"/>
-        <segue reference="qW1-Pj-EA4"/>
+        <segue reference="RWR-dB-muI"/>
+        <segue reference="LK9-jM-VYa"/>
         <segue reference="k6C-Dm-z7N"/>
         <segue reference="UNJ-ao-FRr"/>
+        <segue reference="qPi-F8-2iI"/>
         <segue reference="3FC-gG-wEB"/>
-        <segue reference="RWR-dB-muI"/>
     </inferredMetricsTieBreakers>
 </document>
