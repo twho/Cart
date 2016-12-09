@@ -26,16 +26,15 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     
     //load image
     let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         popDatePicker = PopDatePicker(forTextField: edBirthday)
         btnNext.setImage(imgNextClicked, for: .highlighted)
-        btnNext.setImage(imgNext, for: .normal)
+        btnNext.setImage(imgNextClicked, for: .normal)
         btnPrev.setImage(imgPrevClicked, for: .highlighted)
         btnPrev.setImage(imgPrev, for: .normal)
         self.edFirstName.delegate = self

@@ -23,7 +23,7 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     let defaults = UserDefaults.standard
     let imgConfirmClicked = UIImage(named: "ic_request_click")! as UIImage
-    let imgConfirm = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    
     struct addressKeys {
         static let myAddressKey = "myAddress"
         static let myAddressLat = "myAddressLat"
@@ -44,10 +44,10 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.startUpdatingLocation()
         self.returnMapView.delegate = self
         //remember to turn off in the final
-        self.returnMapView.isUserInteractionEnabled = false
+//        self.returnMapView.isUserInteractionEnabled = false
         self.tvInfoDetails.text = "Request your ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
         self.btnConfirmRide.setImage(imgConfirmClicked, for: .highlighted)
-        self.btnConfirmRide.setImage(imgConfirm, for: .normal)
+        self.btnConfirmRide.setImage(imgConfirmClicked, for: .normal)
         drawRoute()
     }
 
@@ -109,7 +109,6 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     func fadeInContents(withDuration duration: TimeInterval = 2.0) {
         UIView.animate(withDuration: duration, animations: {
-//            self.tvInfoTitle.alpha = 1.0
             self.tvInfoDetails.alpha = 1.0
             self.btnConfirmRide.alpha = 1.0
         })
@@ -119,10 +118,8 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func changeViewContent(withDuration duration: TimeInterval = 2.0) {
         UIView.animate(withDuration: duration, animations: {
             self.btnConfirmRide.alpha = 0.0
-//            self.tvInfoTitle.alpha = 0.0
             self.tvInfoDetails.alpha = 0.0
         })
-//        self.tvInfoTitle.text = "Ride Requested"
         self.tvInfoDetails.text = "You'll received a confirmation text within 10 minutes with your driver's details."
         self.fadeInContents()
     }
@@ -167,7 +164,7 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = btnConfirmRide.tintColor
+        renderer.strokeColor = UIColor.gray
         return renderer
     }
     

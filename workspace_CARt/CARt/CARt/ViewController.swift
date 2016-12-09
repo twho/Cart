@@ -13,15 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnRequest: BorderedButton!
     @IBOutlet weak var btnRefer: BorderedButton!
     
-    let imgRequestClicked = UIImage(named: "ic_request_click")! as UIImage
-    let imgRequest = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgRequest = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.white)!)! as UIImage
     let imgReferClicked = UIImage(named: "ic_refer_click")! as UIImage
-    let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnRequest.setImage(imgRequestClicked, for: .highlighted)
+        btnRequest.setImage(imgRequest, for: .highlighted)
         btnRequest.setImage(imgRequest, for: .normal)
         btnRefer.setImage(imgReferClicked, for: .highlighted)
         btnRefer.setImage(imgRefer, for: .normal)

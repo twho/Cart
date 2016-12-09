@@ -25,8 +25,7 @@ class EntercodeViewController: UIViewController, UITextFieldDelegate {
     
     let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
     let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     
     
     var edCodeList: [UITextField] = []
@@ -36,7 +35,7 @@ class EntercodeViewController: UIViewController, UITextFieldDelegate {
         
         btnNext.setImage(imgNextClicked, for: .highlighted)
         btnPrev.setImage(imgPrevClicked, for: .highlighted)
-        btnNext.setImage(imgNext, for: .normal)
+        btnNext.setImage(imgNextClicked, for: .normal)
         btnPrev.setImage(imgPrev, for: .normal)
         edCode1.becomeFirstResponder()
         edCodeList = [self.edCode1, self.edCode2, self.edCode3, self.edCode4, self.edCode5, self.edCode6]

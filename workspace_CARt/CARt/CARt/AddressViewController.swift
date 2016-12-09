@@ -29,7 +29,7 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var lng: Double = 0.0
     
     let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
     let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
@@ -53,19 +53,19 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         btnPrev.setImage(imgPrevClicked, for: .highlighted)
         btnPrev.setImage(imgPrev, for: .normal)
         btnNext.setImage(imgNextClicked, for: .highlighted)
-        btnNext.setImage(imgNext, for: .normal)
+        btnNext.setImage(imgNextClicked, for: .normal)
         self.mapView.isHidden = true
         self.btnShowMap.isHidden = false
         self.btnHideMap.isHidden = true
         self.hideKeyboardWhenTappedAround()
-        self.edState.isEnabled = false
+//        self.edState.isEnabled = false
         edAddrList = [edAddress, edCity, edState, edZIPcode]
         for textField in edAddrList {
             textField.layer.borderWidth = 1.0
             textField.layer.borderColor = UIColor.lightGray.cgColor
         }
-        self.edState.layer.borderWidth = 1.0
-        self.edState.layer.borderColor = UIColor.white.cgColor
+//        self.edState.layer.borderWidth = 1.0
+//        self.edState.layer.borderColor = UIColor.white.cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -160,9 +160,9 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             
             if (placemarks?.count)! > 0 {
                 let pm = (placemarks?[0])! as CLPlacemark
-//                self.edCity.text = pm.locality!
+                self.edCity.text = pm.locality!
                 self.edState.text = pm.administrativeArea!
-//                self.edZIPcode.text = pm.postalCode!
+                self.edZIPcode.text = pm.postalCode!
             }
             else {
                 print("Problem with the data received from geocoder")

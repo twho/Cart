@@ -24,9 +24,12 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edDestination: UITextField!
     @IBOutlet weak var ivHome: UIImageView!
     @IBOutlet weak var ivDestination: UIImageView!
+    @IBOutlet weak var ivDriver: CornerRadiusImageView!
+    @IBOutlet weak var tvDriverName: UILabel!
+    @IBOutlet weak var tvDriverCar: UILabel!
+    @IBOutlet weak var tvDriverLicense: UILabel!
     
     let imgFinishClicked = UIImage(named: "ic_finish_click")! as UIImage
-    let imgFinish = (UIImage(named: "ic_finish_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
     var time: Float = 0.0
     var timeSlow: Float = 0.0
@@ -48,7 +51,7 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnFinished.setImage(imgFinishClicked, for: .highlighted)
-        btnFinished.setImage(imgFinish, for: .normal)
+        btnFinished.setImage(imgFinishClicked, for: .normal)
         self.scrollView.contentSize.height = 670
         progressSpinner.startAnimating()
         progressBar.setProgress(0, animated: true)
@@ -66,7 +69,7 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         btnFinished.setImage(imgFinishClicked, for: .highlighted)
-        btnFinished.setImage(imgFinish, for: .normal)
+        btnFinished.setImage(imgFinishClicked, for: .normal)
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -97,13 +100,18 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
         if time >= 0.1 && time < 1 {
             tvRequestTitle.text = "Ride Requested"
             tvRequestTitle.textColor = tvBarcodeInstr.textColor
-        } else if (time >= 14){
+        } else if (time >= 10){
+            tvRequestTitle.alpha = 1.0
             tvRequestTitle.text = "Driver Details"
             tvRequestTitle.textColor = tvBarcodeInstr.textColor
             edHome.isHidden = true
             edDestination.isHidden = true
             tvRequestInfo.isHidden = true
-            tvRequestDetails.isHidden = false
+//            tvRequestDetails.isHidden = false
+            ivDriver.isHidden = false
+            tvDriverName.isHidden = false
+            tvDriverCar.isHidden = false
+            tvDriverLicense.isHidden = false
         }
     }
     
@@ -111,6 +119,8 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
         timeSlow += 1
         if timeSlow <= 5 {
             blinkingLabel()
+        } else {
+            self.tvRequestTitle.alpha = 1.0
         }
     }
     

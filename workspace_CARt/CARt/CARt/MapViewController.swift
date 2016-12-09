@@ -38,9 +38,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var storeDropDownList: [MKPlacemark] = []
     
     let imgRequestClicked = UIImage(named: "ic_request_click")! as UIImage
-    let imgRequest = (UIImage(named: "ic_request_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let defaults = UserDefaults.standard
     let storeDropDown = DropDown()
     lazy var dropDowns: [DropDown] = {
@@ -70,9 +69,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
         //remember to turn off in final 
-        self.mapView.isUserInteractionEnabled = false
+//        self.mapView.isUserInteractionEnabled = false
         btnRequest.setImage(imgRequestClicked, for: .highlighted)
-        btnRequest.setImage(imgRequest, for: .normal)
+        btnRequest.setImage(imgRequestClicked, for: .normal)
         btnPrev.setImage(imgPrevClicked, for: .highlighted)
         btnPrev.setImage(imgPrev, for: .normal)
         storeDropDown.dataSource = []
@@ -263,7 +262,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = btnDestination.tintColor
+        renderer.strokeColor = UIColor.gray
         return renderer
     }
     

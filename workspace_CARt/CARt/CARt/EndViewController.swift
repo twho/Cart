@@ -15,7 +15,6 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tvRequestInfo: UILabel!
     @IBOutlet weak var edEmail: UITextField!
     @IBOutlet weak var edComment: UITextField!
-    @IBOutlet weak var btnCancel: BorderedButton!
     @IBOutlet weak var btnSend: BorderedButton!
     @IBOutlet weak var edStoreAddr: UITextField!
     @IBOutlet weak var edHomeAddr: UITextField!
@@ -29,17 +28,18 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var rateStar3: UIButton!
     @IBOutlet weak var rateStar4: UIButton!
     @IBOutlet weak var rateStar5: UIButton!
+    @IBOutlet weak var ivDriver: CornerRadiusImageView!
+    @IBOutlet weak var tvDriverName: UILabel!
+    @IBOutlet weak var tvDriverCar: UILabel!
+    @IBOutlet weak var tvDrvierLicense: UILabel!
     
-    let imgCancelClicked = UIImage(named: "ic_cancel_click")
-    let imgCancel = UIImage(named: "ic_cancel")
     let imgSendClicked = UIImage(named: "ic_finish_click")
-    let imgSend = UIImage(named: "ic_send")
     let imgReferClicked = UIImage(named: "ic_refer_click")! as UIImage
-    let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
+    let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let imgSurveyClicked = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.white)!)! as UIImage
-    let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.gray)!)! as UIImage
-    let imgStar = UIImage(named: "ic_star")
-    let imgStarClicked = UIImage(named: "ic_star_click")
+    let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
+    let imgStar = (UIImage(named: "ic_star")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
+    let imgStarClicked = (UIImage(named: "ic_star_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let defaults = UserDefaults.standard
     
     var ifKeyboardShown: Bool = false
@@ -61,11 +61,9 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        btnCancel.setImage(imgCancelClicked, for: .highlighted)
-        btnCancel.setImage(imgCancel, for: .normal)
+
         btnSend.setImage(imgSendClicked, for: .highlighted)
-        btnSend.setImage(imgSend, for: .normal)
+        btnSend.setImage(imgSendClicked, for: .normal)
         btnSurvey.setImage(imgSurveyClicked, for: .highlighted)
         btnSurvey.setImage(imgSurvey, for: .normal)
         btnRefer.setImage(imgReferClicked, for: .highlighted)
@@ -87,6 +85,9 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         self.edComment.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.starRow = [rateStar1, rateStar2, rateStar3, rateStar4, rateStar5]
+        for star in starRow {
+            star.setImage(imgStar, for: .normal)
+        }
         startCounter()
     }
 
@@ -102,13 +103,16 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     func setProgress() {
         time += 0.1
         if time >= 10 && time < 14 {
-            tvRequestTitle.text = "Ride Requested"
-        } else if (time >= 14){
+            tvRequestTitle.alpha = 1.0
             tvRequestTitle.text = "Driver Details"
             edHomeAddr.isHidden = true
             edStoreAddr.isHidden = true
             tvRequestInfo.isHidden = true
-            tvRequestDetails.isHidden = false
+//            tvRequestDetails.isHidden = false
+            ivDriver.isHidden = false
+            tvDriverName.isHidden = false
+            tvDriverCar.isHidden = false
+            tvDrvierLicense.isHidden = false
         }
     }
     

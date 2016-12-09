@@ -15,7 +15,6 @@ class PhoneViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     let imgVerifyClicked = UIImage(named: "ic_next_click")! as UIImage
-    let imgVerify = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,7 @@ class PhoneViewController: UIViewController {
 //            checkPhoneNumber(textField: edPhone)
 //        }
         btnVerify.setImage(imgVerifyClicked, for: .highlighted)
-        btnVerify.setImage(imgVerify, for: .normal)
+        btnVerify.setImage(imgVerifyClicked, for: .normal)
         btnVerify.isHidden = true
         self.edPhone.becomeFirstResponder()
     }
