@@ -5,6 +5,7 @@
 //  Created by Michael Ho on 12/5/16.
 //  Copyright © 2016 cartrides.org. All rights reserved.
 //
+//  This view is created for Cart team to conduct user testing
 
 import UIKit
 
@@ -12,7 +13,6 @@ class WebViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var edWebUrl: UITextField!
     @IBOutlet weak var btnSearch: UIButton!
-    //WebToHomeIdentifier
     
     override func viewDidLoad() {
         super.viewDidLoad()

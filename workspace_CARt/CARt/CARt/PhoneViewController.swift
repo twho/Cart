@@ -19,10 +19,6 @@ class PhoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if(nil != defaults.value(forKey: "MyPhone")){
-//            self.edPhone.text = defaults.string(forKey: "MyPhone")!
-//            checkPhoneNumber(textField: edPhone)
-//        }
         btnVerify.setImage(imgVerifyClicked, for: .highlighted)
         btnVerify.setImage(imgVerifyClicked, for: .normal)
         btnVerify.isHidden = true
@@ -31,7 +27,6 @@ class PhoneViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func phoneTextWatcher(_ sender: UITextField) {

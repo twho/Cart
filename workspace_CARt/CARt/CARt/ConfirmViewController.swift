@@ -75,13 +75,11 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func showBarcode(){
         self.progressSpinner.isHidden = true
         self.progressBar.isHidden = true
-//        tvBarcodeInstr.text = "Please scan the barcode below at checkout."
         fadeIn(imageView: ivBarcode, withDuration: 2.5)
         fadeIn(btnView: btnFinished)
     }

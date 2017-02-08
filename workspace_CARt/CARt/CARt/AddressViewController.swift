@@ -58,14 +58,11 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.btnShowMap.isHidden = false
         self.btnHideMap.isHidden = true
         self.hideKeyboardWhenTappedAround()
-//        self.edState.isEnabled = false
         edAddrList = [edAddress, edCity, edState, edZIPcode]
         for textField in edAddrList {
             textField.layer.borderWidth = 1.0
             textField.layer.borderColor = UIColor.lightGray.cgColor
         }
-//        self.edState.layer.borderWidth = 1.0
-//        self.edState.layer.borderColor = UIColor.white.cgColor
     }
 
     override func didReceiveMemoryWarning() {

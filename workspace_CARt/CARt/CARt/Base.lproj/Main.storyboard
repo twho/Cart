@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ngF-Dp-8MY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCl-Iv-yQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679.20000000000005" y="36.431784107946029"/>
+            <point key="canvasLocation" x="-876" y="37"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -469,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bG7-mg-VIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2509.5999999999999" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2455" y="37"/>
         </scene>
         <!--Entercode View Controller-->
         <scene sceneID="FSu-Ml-uuw">
@@ -661,7 +661,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Iw-vj-PQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4148" y="35.532233883058474"/>
+            <point key="canvasLocation" x="4004" y="36"/>
         </scene>
         <!--Returnmap View Controller-->
         <scene sceneID="A2P-CN-P7D">
@@ -736,7 +736,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvg-cf-D4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4148" y="894"/>
+            <point key="canvasLocation" x="4004" y="890"/>
         </scene>
         <!--Confirm Home Address-->
         <scene sceneID="M4J-OU-5kv">
@@ -827,7 +827,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGa-gn-IlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5967.1999999999998" y="36.431784107946029"/>
+            <point key="canvasLocation" x="5772" y="36"/>
         </scene>
         <!--End View Controller-->
         <scene sceneID="B4P-6U-WLQ">
@@ -1242,7 +1242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vc-6p-KyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6853.6000000000004" y="35.082458770614693"/>
+            <point key="canvasLocation" x="6607" y="291"/>
         </scene>
         <!--Confirm View Controller-->
         <scene sceneID="sA3-Zr-i3Y">
@@ -1549,103 +1549,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVc-Wy-Byf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3340" y="147.52623688155924"/>
-        </scene>
-        <!--Address Setting-->
-        <scene sceneID="NtC-TN-2c2">
-            <objects>
-                <viewController id="EJg-W9-J70" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xth-0B-PaU"/>
-                        <viewControllerLayoutGuide type="bottom" id="kiV-Lw-lDn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nXr-Ld-D9R">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tZo-3l-4d1">
-                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First, set your home address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tr-wC-YT4">
-                                <rect key="frame" x="16" y="447" width="343" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-FA-SMk">
-                                <rect key="frame" x="0.0" y="435" width="375" height="4"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is where your driver will pick you up, and where your return driver will drop you off." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh0-fN-0fZ">
-                                <rect key="frame" x="16" y="483" width="346" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dn4-lx-pNo">
-                                <rect key="frame" x="16" y="533" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmJ-4K-kvf" customClass="BorderedButton" customModule="CARt" customModuleProvider="target">
-                                <rect key="frame" x="45.5" y="587" width="280" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Set Address" image="ic_finish">
-                                    <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnSetClicked:" destination="EJg-W9-J70" eventType="touchUpInside" id="1ux-Mu-jVz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9eU-MQ-wjZ">
-                                <rect key="frame" x="16" y="72" width="72" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Show map">
-                                            <attributes>
-                                                <font key="NSFont" metaFont="system" size="14"/>
-                                                <integer key="NSUnderline" value="1"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="btnShowMapClicked:" destination="EJg-W9-J70" eventType="touchUpInside" id="BLM-9Y-siF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Address Setting" id="ZSI-Lt-8tx">
-                        <barButtonItem key="leftBarButtonItem" image="ic_prev" id="KPl-Aa-zCo">
-                            <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="btnSet" destination="hmJ-4K-kvf" id="dHx-Up-PcT"/>
-                        <outlet property="btnShowMap" destination="9eU-MQ-wjZ" id="wNH-P1-xfB"/>
-                        <outlet property="edMyAddr" destination="dn4-lx-pNo" id="w1M-3U-tMH"/>
-                        <outlet property="mapView" destination="tZo-3l-4d1" id="fgr-qH-HaV"/>
-                        <outlet property="tvInstruc" destination="Jh0-fN-0fZ" id="9sM-Jf-Rof"/>
-                        <outlet property="tvInstrucTitle" destination="0tr-wC-YT4" id="DQH-pD-yKG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7zr-Dc-M5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2510" y="1479"/>
+            <point key="canvasLocation" x="3194" y="39"/>
         </scene>
         <!--Address View Controller-->
         <scene sceneID="Pw3-9n-mWA">
@@ -1834,7 +1738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VKk-Ip-FZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1672.8" y="35.082458770614693"/>
+            <point key="canvasLocation" x="1646" y="66"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Juk-tu-1cK">
@@ -1852,7 +1756,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZ0-S1-dNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5028" y="35.532233883058474"/>
+            <point key="canvasLocation" x="4910" y="36"/>
         </scene>
         <!--Phone View Controller-->
         <scene sceneID="i4M-F9-pC5">
@@ -1937,30 +1841,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1x-iJ-fg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034" y="806"/>
+            <point key="canvasLocation" x="857" y="1004"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3Ze-eW-Sda">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qHg-r2-Enm" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wTR-Zd-deT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="EJg-W9-J70" kind="relationship" relationship="rootViewController" id="iCB-Gd-Ovt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1pG-QR-koO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1559" y="1480"/>
-        </scene>
-        <!--Text Verify View Controller-->
+        <!--View Controller-->
         <scene sceneID="Ple-eS-mVN">
             <objects>
-                <viewController id="SfI-ET-lds" customClass="TextVerifyViewController" customModule="CARt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SfI-ET-lds" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LxX-Mm-GJt"/>
                         <viewControllerLayoutGuide type="bottom" id="Ue4-0N-sJC"/>
@@ -2058,7 +1944,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qel-BM-oU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="805.54722638680664"/>
+            <point key="canvasLocation" x="57" y="1003"/>
         </scene>
     </scenes>
     <resources>
@@ -2082,11 +1968,11 @@
         <image name="textfield_background" width="174" height="132"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RWR-dB-muI"/>
-        <segue reference="3kR-Qz-65a"/>
-        <segue reference="LK9-jM-VYa"/>
-        <segue reference="k6C-Dm-z7N"/>
+        <segue reference="Fzm-tr-HFU"/>
+        <segue reference="qW1-Pj-EA4"/>
         <segue reference="Tpl-9A-8oQ"/>
-        <segue reference="UNJ-ao-FRr"/>
+        <segue reference="3FC-gG-wEB"/>
+        <segue reference="5TC-GR-mj8"/>
+        <segue reference="G9B-8u-SFs"/>
     </inferredMetricsTieBreakers>
 </document>

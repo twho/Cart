@@ -68,8 +68,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
         self.mapView.delegate = self
-        //remember to turn off in final 
-//        self.mapView.isUserInteractionEnabled = false
         btnRequest.setImage(imgRequestClicked, for: .highlighted)
         btnRequest.setImage(imgRequestClicked, for: .normal)
         btnPrev.setImage(imgPrevClicked, for: .highlighted)
@@ -88,9 +86,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]){
         let location = locations.last
-//        let center = CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-//        self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
         self.geocoder.reverseGeocodeLocation(location!, completionHandler: {(placemarks, error) -> Void in
             
@@ -126,7 +121,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.storeList = response.mapItems
             //Clear existing pins
             self.mapView.removeAnnotations(self.mapView.annotations)
-//            for index in 0...self.storeList.count-1{
             for index in 0...1{
                 let selectedItem = self.storeList[index].placemark
                 if selectedItem.name!.lowercased().range(of:"pharmacy") == nil && selectedItem.name!.lowercased().range(of:"gas") == nil{
@@ -148,7 +142,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     @IBAction func btnRequestPressed(_ sender: BorderedButton) {
-        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to pay $10 at Meijer for your ride.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to pay $10 at Meijer for your round trip.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
             //            print("Destructive")
         }
@@ -170,7 +164,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         appearance.cellHeight = 60
         appearance.backgroundColor = UIColor(white: 1, alpha: 1)
         appearance.selectionBackgroundColor = UIColor(red: 0.6494, green: 0.8155, blue: 1.0, alpha: 0.2)
-        //		appearance.separatorColor = UIColor(white: 0.7, alpha: 0.8)
         appearance.cornerRadius = 10
         appearance.shadowColor = UIColor(white: 0.6, alpha: 1)
         appearance.shadowOpacity = 0.9

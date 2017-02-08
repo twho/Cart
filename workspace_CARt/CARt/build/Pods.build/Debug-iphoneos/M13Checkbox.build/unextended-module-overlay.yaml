@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/mike/cart_ios/workspace_CARt/CARt/build/Debug-iphoneos/M13Checkbox/M13Checkbox.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/mike/cart_ios/workspace_CARt/CARt/build/Pods.build/Debug-iphoneos/M13Checkbox.build/unextended-module.modulemap',
+    }]
+  }]
+}

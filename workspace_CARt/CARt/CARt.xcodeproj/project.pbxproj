@@ -13,12 +13,10 @@
 		27097DE61DB4655900F3D1DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27097DE41DB4655900F3D1DC /* LaunchScreen.storyboard */; };
 		27097DF11DB4655900F3D1DC /* CARtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097DF01DB4655900F3D1DC /* CARtTests.swift */; };
 		27097DFC1DB4655900F3D1DC /* CARtUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097DFB1DB4655900F3D1DC /* CARtUITests.swift */; };
-		27097E0A1DB4736E00F3D1DC /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E091DB4736E00F3D1DC /* BorderedButton.swift */; };
+		27097E0A1DB4736E00F3D1DC /* ButtonModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E091DB4736E00F3D1DC /* ButtonModules.swift */; };
 		27097E0E1DB4766700F3D1DC /* ColoredUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */; };
-		270CAD371DD3C4CF0047B511 /* TextVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270CAD361DD3C4CF0047B511 /* TextVerifyViewController.swift */; };
 		272817651DE00855004ED027 /* DropDownListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272817641DE00855004ED027 /* DropDownListCell.xib */; };
 		27602BA51DB8184C00F1BB36 /* ReturnmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27602BA41DB8184C00F1BB36 /* ReturnmapViewController.swift */; };
-		2773BFB01DFA73AC00A8AF60 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2773BFAF1DFA73AC00A8AF60 /* ThemeButton.swift */; };
 		277661661DE509A70062F668 /* PopDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277661641DE509A70062F668 /* PopDateViewController.swift */; };
 		277661671DE509A70062F668 /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277661651DE509A70062F668 /* PopDateViewController.xib */; };
 		27787FD31DB858BF002D7CE0 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27787FD21DB858BF002D7CE0 /* AddressViewController.swift */; };
@@ -73,12 +71,10 @@
 		27097DF71DB4655900F3D1DC /* CARtUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CARtUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27097DFB1DB4655900F3D1DC /* CARtUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARtUITests.swift; sourceTree = "<group>"; };
 		27097DFD1DB4655900F3D1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27097E091DB4736E00F3D1DC /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		27097E091DB4736E00F3D1DC /* ButtonModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModules.swift; sourceTree = "<group>"; };
 		27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredUIImage.swift; sourceTree = "<group>"; };
-		270CAD361DD3C4CF0047B511 /* TextVerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextVerifyViewController.swift; sourceTree = "<group>"; };
 		272817641DE00855004ED027 /* DropDownListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownListCell.xib; sourceTree = "<group>"; };
 		27602BA41DB8184C00F1BB36 /* ReturnmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnmapViewController.swift; sourceTree = "<group>"; };
-		2773BFAF1DFA73AC00A8AF60 /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		277661641DE509A70062F668 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
 		277661651DE509A70062F668 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
 		27787FD21DB858BF002D7CE0 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +200,6 @@
 				27787FD21DB858BF002D7CE0 /* AddressViewController.swift */,
 				27E3368A1DB99F0200DB9D9A /* EndViewController.swift */,
 				278738F41DBFEE060047EE32 /* PhoneViewController.swift */,
-				270CAD361DD3C4CF0047B511 /* TextVerifyViewController.swift */,
 				27E61D121DF679F30073EE63 /* WebViewController.swift */,
 			);
 			name = Views;
@@ -226,14 +221,13 @@
 		278D604A1DDFFA8D003EBF70 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				27097E091DB4736E00F3D1DC /* BorderedButton.swift */,
+				27097E091DB4736E00F3D1DC /* ButtonModules.swift */,
 				27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */,
 				27E43CA91DE0070200005E62 /* DropDownListCell.swift */,
 				272817641DE00855004ED027 /* DropDownListCell.xib */,
 				277661641DE509A70062F668 /* PopDateViewController.swift */,
 				277661651DE509A70062F668 /* PopDateViewController.xib */,
 				278159A11DE77371006E05EF /* PopDatePicker.swift */,
-				2773BFAF1DFA73AC00A8AF60 /* ThemeButton.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -556,13 +550,11 @@
 				278159A21DE77371006E05EF /* PopDatePicker.swift in Sources */,
 				277661661DE509A70062F668 /* PopDateViewController.swift in Sources */,
 				27E336891DB98E5B00DB9D9A /* PinAnnotation.swift in Sources */,
-				270CAD371DD3C4CF0047B511 /* TextVerifyViewController.swift in Sources */,
 				278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */,
 				27097DDE1DB4655900F3D1DC /* ViewController.swift in Sources */,
-				2773BFB01DFA73AC00A8AF60 /* ThemeButton.swift in Sources */,
 				27097DDC1DB4655900F3D1DC /* AppDelegate.swift in Sources */,
 				27C0A5C11DD11BC900B9FB2B /* imageColorFilter.swift in Sources */,
-				27097E0A1DB4736E00F3D1DC /* BorderedButton.swift in Sources */,
+				27097E0A1DB4736E00F3D1DC /* ButtonModules.swift in Sources */,
 				27602BA51DB8184C00F1BB36 /* ReturnmapViewController.swift in Sources */,
 				27E3368B1DB99F0200DB9D9A /* EndViewController.swift in Sources */,
 				27787FD31DB858BF002D7CE0 /* AddressViewController.swift in Sources */,

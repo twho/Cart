@@ -108,7 +108,6 @@ class EndViewController: UIViewController, UITextFieldDelegate {
             edHomeAddr.isHidden = true
             edStoreAddr.isHidden = true
             tvRequestInfo.isHidden = true
-//            tvRequestDetails.isHidden = false
             ivDriver.isHidden = false
             tvDriverName.isHidden = false
             tvDriverCar.isHidden = false

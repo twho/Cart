@@ -43,8 +43,6 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
         self.returnMapView.delegate = self
-        //remember to turn off in the final
-//        self.returnMapView.isUserInteractionEnabled = false
         self.tvInfoDetails.text = "Request your ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
         self.btnConfirmRide.setImage(imgConfirmClicked, for: .highlighted)
         self.btnConfirmRide.setImage(imgConfirmClicked, for: .normal)
@@ -59,9 +57,6 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]){
         let location = locations.last
-//        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-//        self.returnMapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -126,16 +121,6 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     @IBAction func btnRequestPressed(_ sender: BorderedButton) {
         self.performSegue(withIdentifier: "returnToEndIdentifier", sender: self)
-//        let alert = UIAlertController(title: "Are you sure you want to request a ride?", message: "By tapping request, you agree to request a ride from Meijer to your home.", preferredStyle: UIAlertControllerStyle.alert)
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-//        }
-//        let okAction = UIAlertAction(title: "Request", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-//            self.changeViewContent()
-//            self.performSegue(withIdentifier: "returnToEndIdentifier", sender: self)
-//        }
-//        alert.addAction(cancelAction)
-//        alert.addAction(okAction)
-//        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func btnCancelPressed(_ sender: AnyObject) {
