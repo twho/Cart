@@ -15,6 +15,7 @@
 		27097DFC1DB4655900F3D1DC /* CARtUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097DFB1DB4655900F3D1DC /* CARtUITests.swift */; };
 		27097E0A1DB4736E00F3D1DC /* ButtonModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E091DB4736E00F3D1DC /* ButtonModules.swift */; };
 		27097E0E1DB4766700F3D1DC /* ColoredUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */; };
+		272401591E7652430012E685 /* ImageResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272401581E7652430012E685 /* ImageResources.swift */; };
 		272817651DE00855004ED027 /* DropDownListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272817641DE00855004ED027 /* DropDownListCell.xib */; };
 		27602BA51DB8184C00F1BB36 /* ReturnmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27602BA41DB8184C00F1BB36 /* ReturnmapViewController.swift */; };
 		277661661DE509A70062F668 /* PopDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277661641DE509A70062F668 /* PopDateViewController.swift */; };
@@ -24,7 +25,6 @@
 		278159A21DE77371006E05EF /* PopDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278159A11DE77371006E05EF /* PopDatePicker.swift */; };
 		278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278738F41DBFEE060047EE32 /* PhoneViewController.swift */; };
 		27AB32341DFA7F640037CE56 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AB32331DFA7F640037CE56 /* CornerRadiusView.swift */; };
-		27C0A5C11DD11BC900B9FB2B /* imageColorFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */; };
 		27D2A5AB1DD657D600F8AD15 /* UIColorByHexRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */; };
 		27DB36141DB487E800753ED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DB36131DB487E800753ED5 /* Assets.xcassets */; };
 		27DB36181DB4944E00753ED5 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB36171DB4944E00753ED5 /* ContactViewController.swift */; };
@@ -73,6 +73,7 @@
 		27097DFD1DB4655900F3D1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27097E091DB4736E00F3D1DC /* ButtonModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModules.swift; sourceTree = "<group>"; };
 		27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredUIImage.swift; sourceTree = "<group>"; };
+		272401581E7652430012E685 /* ImageResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResources.swift; sourceTree = "<group>"; };
 		272817641DE00855004ED027 /* DropDownListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownListCell.xib; sourceTree = "<group>"; };
 		27602BA41DB8184C00F1BB36 /* ReturnmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnmapViewController.swift; sourceTree = "<group>"; };
 		277661641DE509A70062F668 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 		278159A11DE77371006E05EF /* PopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDatePicker.swift; sourceTree = "<group>"; };
 		278738F41DBFEE060047EE32 /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		27AB32331DFA7F640037CE56 /* CornerRadiusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
-		27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageColorFilter.swift; sourceTree = "<group>"; };
 		27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorByHexRGB.swift; sourceTree = "<group>"; };
 		27DB36131DB487E800753ED5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27DB36171DB4944E00753ED5 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +158,7 @@
 		27097DDA1DB4655900F3D1DC /* CARt */ = {
 			isa = PBXGroup;
 			children = (
+				272401571E7651F70012E685 /* Models */,
 				278D604A1DDFFA8D003EBF70 /* Objects */,
 				27787FD41DB85AC2002D7CE0 /* Extensions */,
 				27787FD11DB85318002D7CE0 /* Views */,
@@ -189,6 +190,15 @@
 			path = CARtUITests;
 			sourceTree = "<group>";
 		};
+		272401571E7651F70012E685 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27AB32331DFA7F640037CE56 /* CornerRadiusView.swift */,
+				272401581E7652430012E685 /* ImageResources.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		27787FD11DB85318002D7CE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,9 +221,7 @@
 				27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */,
 				27F2D17E1DB57403003CF00D /* TextFieldMaxLengths.swift */,
 				27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */,
-				27C0A5C01DD11BC900B9FB2B /* imageColorFilter.swift */,
 				27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */,
-				27AB32331DFA7F640037CE56 /* CornerRadiusView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -553,7 +561,6 @@
 				278738F51DBFEE060047EE32 /* PhoneViewController.swift in Sources */,
 				27097DDE1DB4655900F3D1DC /* ViewController.swift in Sources */,
 				27097DDC1DB4655900F3D1DC /* AppDelegate.swift in Sources */,
-				27C0A5C11DD11BC900B9FB2B /* imageColorFilter.swift in Sources */,
 				27097E0A1DB4736E00F3D1DC /* ButtonModules.swift in Sources */,
 				27602BA51DB8184C00F1BB36 /* ReturnmapViewController.swift in Sources */,
 				27E3368B1DB99F0200DB9D9A /* EndViewController.swift in Sources */,
@@ -561,6 +568,7 @@
 				27F2D17B1DB55841003CF00D /* ConfirmViewController.swift in Sources */,
 				27E43CAB1DE0070200005E62 /* DropDownListCell.swift in Sources */,
 				27DB36181DB4944E00753ED5 /* ContactViewController.swift in Sources */,
+				272401591E7652430012E685 /* ImageResources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,8 +29,6 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tvDriverCar: UILabel!
     @IBOutlet weak var tvDriverLicense: UILabel!
     
-    let imgFinishClicked = UIImage(named: "ic_finish_click")! as UIImage
-    let defaults = UserDefaults.standard
     var time: Float = 0.0
     var timeSlow: Float = 0.0
     var timer = Timer()
@@ -39,25 +37,30 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     var ifKeyboardShown: Bool = false
     var blinking = false
     
-    struct addressKeys {
-        static let myAddressKey = "myAddress"
-        static let myAddressLat = "myAddressLat"
-        static let myAddressLng = "myAddressLng"
-        static let destAddressKey = "destAddressKey"
-        static let destAddressLat = "destAddressLat"
-        static let destAddressLng = "destAddressLng"
-    }
+    let defaults = UserDefaults.standard
+    let imageResources = ImageResources()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnFinished.setImage(imgFinishClicked, for: .highlighted)
-        btnFinished.setImage(imgFinishClicked, for: .normal)
+        
+        startCounter()
+        initUIViews()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    func initUIViews(){
         self.scrollView.contentSize.height = 670
         progressSpinner.startAnimating()
         progressBar.setProgress(0, animated: true)
+        
+        // Set invisible initially
         ivBarcode.alpha = 0.0
         btnFinished.alpha = 0.0
-        startCounter()
+        
         edHome.leftViewMode = UITextFieldViewMode.always
         edHome.leftView = ivHome
         edHome.text = defaults.string(forKey: addressKeys.myAddressKey)
@@ -66,11 +69,9 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
         edDestination.leftView = ivDestination
         edDestination.text = defaults.string(forKey: addressKeys.destAddressKey)
         edDestination.isEnabled = false
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        btnFinished.setImage(imgFinishClicked, for: .highlighted)
-        btnFinished.setImage(imgFinishClicked, for: .normal)
-        self.hideKeyboardWhenTappedAround()
+        
+        btnFinished.setImage(imageResources.imgFinishClicked, for: .highlighted)
+        btnFinished.setImage(imageResources.imgFinishClicked, for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +106,6 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
             edHome.isHidden = true
             edDestination.isHidden = true
             tvRequestInfo.isHidden = true
-//            tvRequestDetails.isHidden = false
             ivDriver.isHidden = false
             tvDriverName.isHidden = false
             tvDriverCar.isHidden = false
@@ -158,7 +158,6 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btnCancel(_ sender: UIButton) {
         let alert = UIAlertController(title: "Are you sure you want to cancel the ride?", message: "By tapping yes, you will cancel the ride and return to home page.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-            //            print("Destructive")
         }
         let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             self.performSegue(withIdentifier: "confirmToHomeIdentifier", sender: self)

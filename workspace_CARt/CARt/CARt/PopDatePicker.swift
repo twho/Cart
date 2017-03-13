@@ -49,7 +49,6 @@ public class PopDatePicker : NSObject, UIPopoverPresentationControllerDelegate, 
         }
     }
     
-    //Added UITraitCollection parameter to fix the full screen popover stretch in iPhone 6s and 6s plus - Pramod Joshi
     public func adaptivePresentationStyle(
         for controller: UIPresentationController,
         traitCollection: UITraitCollection)

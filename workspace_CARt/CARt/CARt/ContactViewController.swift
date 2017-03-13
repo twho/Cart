@@ -24,31 +24,36 @@ class ContactViewController: UIViewController, UITextFieldDelegate {
     
     var popDatePicker: PopDatePicker?
     
-    //load image
-    let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
-    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
+    let imageResources = ImageResources()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        popDatePicker = PopDatePicker(forTextField: edBirthday)
-        btnNext.setImage(imgNextClicked, for: .highlighted)
-        btnNext.setImage(imgNextClicked, for: .normal)
-        btnPrev.setImage(imgPrevClicked, for: .highlighted)
-        btnPrev.setImage(imgPrev, for: .normal)
+        initUIViews()
+    }
+    
+    func initUIViews(){
+        btnPrev.setImage(imageResources.imgPrevClicked, for: .highlighted)
+        btnPrev.setImage(imageResources.imgPrev, for: .normal)
+        btnNext.setImage(imageResources.imgNextClicked, for: .highlighted)
+        btnNext.setImage(imageResources.imgNextClicked, for: .normal)
         self.edFirstName.delegate = self
         self.edLastName.delegate = self
         self.edBirthday.delegate = self
         self.edFirstName.becomeFirstResponder()
         tvAgeMsg.textColor = tvTitle.textColor
         tvAgeMsg.text = "You must be at least 18 yrs old to ride."
+        
+        // Checkbox
         checkbox.setCheckState(M13Checkbox.CheckState.unchecked, animated: true)
+        
+        // Date picker
+        popDatePicker = PopDatePicker(forTextField: edBirthday)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func btnNextPressed(_ sender: BorderedButton) {

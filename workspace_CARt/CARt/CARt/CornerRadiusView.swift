@@ -1,6 +1,6 @@
 //
 //  CornerRadiusImageView.swift
-//  Hygeniux
+//  CARt
 //
 //  Created by Michael Ho on 11/13/16.
 //  Copyright © 2016 hygeniux.weebly.com. All rights reserved.

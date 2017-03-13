@@ -16,6 +16,15 @@ protocol HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark)
 }
 
+struct addressKeys {
+    static let myAddressKey = "myAddress"
+    static let myAddressLat = "myAddressLat"
+    static let myAddressLng = "myAddressLng"
+    static let destAddressKey = "destAddressKey"
+    static let destAddressLat = "destAddressLat"
+    static let destAddressLng = "destAddressLng"
+}
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -37,10 +46,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var storeDistance: [Double] = []
     var storeDropDownList: [MKPlacemark] = []
     
-    let imgRequestClicked = UIImage(named: "ic_request_click")! as UIImage
-    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let defaults = UserDefaults.standard
+    let imageResources = ImageResources()
+    
     let storeDropDown = DropDown()
     lazy var dropDowns: [DropDown] = {
         return [
@@ -48,30 +56,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         ]
     }()
     
-    struct addressKeys {
-        static let myAddressKey = "myAddress"
-        static let myAddressLat = "myAddressLat"
-        static let myAddressLng = "myAddressLng"
-        static let destAddressKey = "destAddressKey"
-        static let destAddressLat = "destAddressLat"
-        static let destAddressLng = "destAddressLng"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationManager = CLLocationManager()
-        self.geocoder = CLGeocoder()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.startUpdatingLocation()
-        self.mapView.showsUserLocation = true
-        self.mapView.delegate = self
-        btnRequest.setImage(imgRequestClicked, for: .highlighted)
-        btnRequest.setImage(imgRequestClicked, for: .normal)
-        btnPrev.setImage(imgPrevClicked, for: .highlighted)
-        btnPrev.setImage(imgPrev, for: .normal)
+        initLocationManager()
+        initUIViews()
+        
         storeDropDown.dataSource = []
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -80,6 +70,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func initLocationManager(){
+        self.locationManager = CLLocationManager()
+        self.geocoder = CLGeocoder()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
+        self.mapView.delegate = self
+    }
+    
+    func initUIViews(){
+        btnRequest.setImage(imageResources.imgRequestClicked, for: .highlighted)
+        btnRequest.setImage(imageResources.imgRequestClicked, for: .normal)
+        btnPrev.setImage(imageResources.imgPrevClicked, for: .highlighted)
+        btnPrev.setImage(imageResources.imgPrev, for: .normal)
     }
     
     //location delegate methods
@@ -92,14 +100,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if error != nil {
                 print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
                 return
-            }
-            
-            if (placemarks?.count)! > 0 {
-//                let pm = (placemarks?[0])! as CLPlacemark
-//                self.edMyAddr.text = pm.name! + ", " + pm.locality! + ", " + pm.administrativeArea!
-            }
-            else {
-                print("Problem with the data received from geocoder")
             }
         })
         searchTargetStore()
@@ -182,6 +182,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 cell.suffixLabel.text = "\(self.storeDistance[index]) miles"
             }
         }
+        
         storeDropDown.selectionAction = { [unowned self] (index, item) in
             self.btnDestination.setTitle(item, for: .normal)
             self.storeLat = self.storeDropDownList[index].coordinate.latitude

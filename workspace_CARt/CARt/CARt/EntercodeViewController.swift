@@ -10,8 +10,6 @@ import UIKit
 
 class EntercodeViewController: UIViewController, UITextFieldDelegate {
     
-    
-    
     @IBOutlet weak var btnNext: BorderedButton!
     @IBOutlet weak var btnPrev: BorderedButton!
     
@@ -23,34 +21,35 @@ class EntercodeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var edCode6: UITextField!
     @IBOutlet weak var tvWarning: UILabel!
     
-    let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
-    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
-    
-    
     var edCodeList: [UITextField] = []
+    
+    let imageResources = ImageResources()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnNext.setImage(imgNextClicked, for: .highlighted)
-        btnPrev.setImage(imgPrevClicked, for: .highlighted)
-        btnNext.setImage(imgNextClicked, for: .normal)
-        btnPrev.setImage(imgPrev, for: .normal)
-        edCode1.becomeFirstResponder()
-        edCodeList = [self.edCode1, self.edCode2, self.edCode3, self.edCode4, self.edCode5, self.edCode6]
-        for textField in edCodeList{
-            textField.delegate = self
-        }
+        initUIViews()
         setCodeView()
         self.hideKeyboardWhenTappedAround()
     }
     
+    func initUIViews(){
+        btnNext.setImage(imageResources.imgNextClicked, for: .highlighted)
+        btnPrev.setImage(imageResources.imgPrevClicked, for: .highlighted)
+        btnNext.setImage(imageResources.imgNextClicked, for: .normal)
+        btnPrev.setImage(imageResources.imgPrev, for: .normal)
+        edCode1.becomeFirstResponder()
+
+    }
+    
     func setCodeView(){
-        setAllCodeFrameColor(color: UIColor.gray)
+        edCodeList = [self.edCode1, self.edCode2, self.edCode3, self.edCode4, self.edCode5, self.edCode6]
+        
         for textField in edCodeList{
+            textField.delegate = self
             textField.layer.borderWidth = 1.0
         }
+        setAllCodeFrameColor(color: UIColor.gray)
     }
 
     override func didReceiveMemoryWarning() {

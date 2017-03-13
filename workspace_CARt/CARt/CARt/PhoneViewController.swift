@@ -14,13 +14,17 @@ class PhoneViewController: UIViewController {
     @IBOutlet weak var btnVerify: BorderedButton!
     
     let defaults = UserDefaults.standard
-    let imgVerifyClicked = UIImage(named: "ic_next_click")! as UIImage
+    let imageResources = ImageResources()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnVerify.setImage(imgVerifyClicked, for: .highlighted)
-        btnVerify.setImage(imgVerifyClicked, for: .normal)
+        initUIViews()
+    }
+    
+    func initUIViews(){
+        btnVerify.setImage(imageResources.imgVerifyClicked, for: .highlighted)
+        btnVerify.setImage(imageResources.imgVerifyClicked, for: .normal)
         btnVerify.isHidden = true
         self.edPhone.becomeFirstResponder()
     }

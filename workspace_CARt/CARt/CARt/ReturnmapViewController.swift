@@ -22,20 +22,21 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     var timer = Timer()
     
     let defaults = UserDefaults.standard
-    let imgConfirmClicked = UIImage(named: "ic_request_click")! as UIImage
-    
-    struct addressKeys {
-        static let myAddressKey = "myAddress"
-        static let myAddressLat = "myAddressLat"
-        static let myAddressLng = "myAddressLng"
-        static let destAddressKey = "destAddressKey"
-        static let destAddressLat = "destAddressLat"
-        static let destAddressLng = "destAddressLng"
-    }
+    let imageResources = ImageResources()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initLocationManager()
+        initUIViews()
+        drawRoute()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func initLocationManager(){
         self.locationManager = CLLocationManager()
         self.geocoder = CLGeocoder()
         self.locationManager.delegate = self
@@ -43,14 +44,12 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
         self.returnMapView.delegate = self
-        self.tvInfoDetails.text = "Request your ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
-        self.btnConfirmRide.setImage(imgConfirmClicked, for: .highlighted)
-        self.btnConfirmRide.setImage(imgConfirmClicked, for: .normal)
-        drawRoute()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func initUIViews(){
+        self.tvInfoDetails.text = "Request your ride home to " + defaults.string(forKey: addressKeys.myAddressKey)!
+        self.btnConfirmRide.setImage(imageResources.imgConfirmClicked, for: .highlighted)
+        self.btnConfirmRide.setImage(imageResources.imgConfirmClicked, for: .normal)
     }
     
     //location delegate methods
@@ -67,13 +66,19 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func drawRoute(){
         let request = MKDirectionsRequest()
         let sourcePlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.destAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.destAddressLng)!)!), addressDictionary: nil)
+        
+        // Set up request
         request.source = MKMapItem(placemark: sourcePlacemark)
         let destPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!), addressDictionary: nil)
         request.destination = MKMapItem(placemark: destPlacemark)
-        dropPinZoomIn(placemark: destPlacemark, locationTag: 0)
-        dropPinZoomIn(placemark: sourcePlacemark, locationTag: 1)
         request.requestsAlternateRoutes = false
         request.transportType = .automobile
+        
+        // Drop pins at destination and start point
+        dropPinZoomIn(placemark: destPlacemark, locationTag: 0)
+        dropPinZoomIn(placemark: sourcePlacemark, locationTag: 1)
+        
+        // Draw destination route
         let directions = MKDirections(request: request)
         directions.calculate { [unowned self] response, error in
             guard let unwrappedResponse = response else { return }
@@ -90,6 +95,8 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
             pinAnnotation.subtitle = defaults.string(forKey: addressKeys.myAddressKey)
             pinAnnotation.setCoordinate(newCoordinate: placemark.coordinate)
             returnMapView.addAnnotation(pinAnnotation)
+            
+            // Set map camera
             let center = CLLocationCoordinate2D(latitude: Double(defaults.string(forKey: addressKeys.myAddressLat)!)!, longitude: Double(defaults.string(forKey: addressKeys.myAddressLng)!)!)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.13, longitudeDelta: 0.13))
             self.returnMapView.setRegion(region, animated: true)
@@ -156,7 +163,6 @@ class ReturnmapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is PinAnnotation {
             let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
-            //var color = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
             pinAnnotationView.pinTintColor = UIColor(red: 108, green: 149, blue: 182)
             pinAnnotationView.isDraggable = true
             pinAnnotationView.canShowCallout = true

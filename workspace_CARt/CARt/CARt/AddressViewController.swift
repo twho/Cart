@@ -21,26 +21,34 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var btnHideMap: UIButton!
     @IBOutlet weak var btnPrev: BorderedButton!
     @IBOutlet weak var btnNext: BorderedButton!
-    
     @IBOutlet weak var scrollView: UIScrollView!
+    
     var locationManager: CLLocationManager!
     var geocoder: CLGeocoder!
+    var ifMapShown: Bool = false
+    var edAddrList: [UITextField] = []
     var lat: Double = 0.0
     var lng: Double = 0.0
     
-    let imgPrevClicked = UIImage(named: "ic_prev_click")! as UIImage
-    let imgPrev = (UIImage(named: "ic_prev_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
-    let imgNextClicked = UIImage(named: "ic_next_click")! as UIImage
-    let imgNext = (UIImage(named: "ic_next_click")?.maskWithColor(color: UIColor.gray)!)! as UIImage
     let defaults = UserDefaults.standard
+    let imageResources = ImageResources()
     
-    var ifMapShown: Bool = false
-    var edAddrList: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.scrollView.contentSize.height = 730
+        initLocationManager()
+        initUIViews()
+        
+        // Set views invisible
+        self.mapView.isHidden = true
+        self.btnShowMap.isHidden = false
+        self.btnHideMap.isHidden = true
+        
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    func initLocationManager(){
         self.locationManager = CLLocationManager()
         self.geocoder = CLGeocoder()
         self.locationManager.delegate = self
@@ -48,16 +56,17 @@ class AddressViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
+    }
+    
+    func initUIViews(){
+        self.scrollView.contentSize.height = 730
         self.edAddress.delegate = self
         self.edAddress.becomeFirstResponder()
-        btnPrev.setImage(imgPrevClicked, for: .highlighted)
-        btnPrev.setImage(imgPrev, for: .normal)
-        btnNext.setImage(imgNextClicked, for: .highlighted)
-        btnNext.setImage(imgNextClicked, for: .normal)
-        self.mapView.isHidden = true
-        self.btnShowMap.isHidden = false
-        self.btnHideMap.isHidden = true
-        self.hideKeyboardWhenTappedAround()
+        btnPrev.setImage(imageResources.imgPrevClicked, for: .highlighted)
+        btnPrev.setImage(imageResources.imgPrev, for: .normal)
+        btnNext.setImage(imageResources.imgNextClicked, for: .highlighted)
+        btnNext.setImage(imageResources.imgNextClicked, for: .normal)
+        
         edAddrList = [edAddress, edCity, edState, edZIPcode]
         for textField in edAddrList {
             textField.layer.borderWidth = 1.0

@@ -33,14 +33,8 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tvDriverCar: UILabel!
     @IBOutlet weak var tvDrvierLicense: UILabel!
     
-    let imgSendClicked = UIImage(named: "ic_finish_click")
-    let imgReferClicked = UIImage(named: "ic_refer_click")! as UIImage
-    let imgRefer = (UIImage(named: "ic_refer_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
-    let imgSurveyClicked = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor.white)!)! as UIImage
-    let imgSurvey = (UIImage(named: "ic_survey")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
-    let imgStar = (UIImage(named: "ic_star")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
-    let imgStarClicked = (UIImage(named: "ic_star_click")?.maskWithColor(color: UIColor(red:0.47, green:0.73, blue:0.30, alpha:1.0))!)! as UIImage
     let defaults = UserDefaults.standard
+    let imageResources = ImageResources()
     
     var ifKeyboardShown: Bool = false
     var time: Float = 0.0
@@ -50,24 +44,22 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     var starRow: [UIButton] = []
     var blinking = false
     
-    struct addressKeys {
-        static let myAddressKey = "myAddress"
-        static let myAddressLat = "myAddressLat"
-        static let myAddressLng = "myAddressLng"
-        static let destAddressKey = "destAddressKey"
-        static let destAddressLat = "destAddressLat"
-        static let destAddressLng = "destAddressLng"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        btnSend.setImage(imgSendClicked, for: .highlighted)
-        btnSend.setImage(imgSendClicked, for: .normal)
-        btnSurvey.setImage(imgSurveyClicked, for: .highlighted)
-        btnSurvey.setImage(imgSurvey, for: .normal)
-        btnRefer.setImage(imgReferClicked, for: .highlighted)
-        btnRefer.setImage(imgRefer, for: .normal)
+        initUIViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        startCounter()
+    }
+    
+    func initUIViews(){
+        btnSend.setImage(imageResources.imgSendClicked, for: .highlighted)
+        btnSend.setImage(imageResources.imgSendClicked, for: .normal)
+        btnSurvey.setImage(imageResources.imgSurveyClicked, for: .highlighted)
+        btnSurvey.setImage(imageResources.imgSurvey, for: .normal)
+        btnRefer.setImage(imageResources.imgReferClicked, for: .highlighted)
+        btnRefer.setImage(imageResources.imgRefer, for: .normal)
         edStoreAddr.leftViewMode = UITextFieldViewMode.always
         edStoreAddr.leftView = ivStore
         edStoreAddr.text = defaults.string(forKey: addressKeys.destAddressKey)
@@ -76,8 +68,6 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         edHomeAddr.leftView = ivHome
         edHomeAddr.text = defaults.string(forKey: addressKeys.myAddressKey)
         edHomeAddr.isEnabled = false
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         edComment.layer.borderWidth = 0.5
         edComment.layer.borderColor = UIColor.lightGray.cgColor
         self.scrollView.contentSize.height = 1730
@@ -86,9 +76,9 @@ class EndViewController: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWhenTappedAround()
         self.starRow = [rateStar1, rateStar2, rateStar3, rateStar4, rateStar5]
         for star in starRow {
-            star.setImage(imgStar, for: .normal)
+            star.setImage(imageResources.imgStar, for: .normal)
         }
-        startCounter()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,45 +134,45 @@ class EndViewController: UIViewController, UITextFieldDelegate {
     
     func setAllStarEmpty(){
         for star in starRow {
-            star.setImage(imgStar, for: .normal)
-            star.setImage(imgStar, for: .highlighted)
+            star.setImage(imageResources.imgStar, for: .normal)
+            star.setImage(imageResources.imgStar, for: .highlighted)
         }
     }
     
     @IBAction func star1Clicked(_ sender: UIButton) {
         setAllStarEmpty()
-        starRow[0].setImage(imgStarClicked, for: .normal)
-        starRow[0].setImage(imgStarClicked, for: .highlighted)
+        starRow[0].setImage(imageResources.imgStarClicked, for: .normal)
+        starRow[0].setImage(imageResources.imgStarClicked, for: .highlighted)
     }
     
     @IBAction func star2Clicked(_ sender: UIButton) {
         setAllStarEmpty()
         for i in 0...1 {
-            starRow[i].setImage(imgStarClicked, for: .normal)
-            starRow[i].setImage(imgStarClicked, for: .highlighted)
+            starRow[i].setImage(imageResources.imgStarClicked, for: .normal)
+            starRow[i].setImage(imageResources.imgStarClicked, for: .highlighted)
         }
     }
     
     @IBAction func star3Clicked(_ sender: UIButton) {
         setAllStarEmpty()
         for i in 0...2 {
-            starRow[i].setImage(imgStarClicked, for: .normal)
-            starRow[i].setImage(imgStarClicked, for: .highlighted)
+            starRow[i].setImage(imageResources.imgStarClicked, for: .normal)
+            starRow[i].setImage(imageResources.imgStarClicked, for: .highlighted)
         }
     }
     
     @IBAction func star4Clicked(_ sender: UIButton) {
         setAllStarEmpty()
         for i in 0...3 {
-            starRow[i].setImage(imgStarClicked, for: .normal)
-            starRow[i].setImage(imgStarClicked, for: .highlighted)
+            starRow[i].setImage(imageResources.imgStarClicked, for: .normal)
+            starRow[i].setImage(imageResources.imgStarClicked, for: .highlighted)
         }
     }
     
     @IBAction func star5Clicked(_ sender: UIButton) {
         for star in starRow {
-            star.setImage(imgStarClicked, for: .normal)
-            star.setImage(imgStarClicked, for: .highlighted)
+            star.setImage(imageResources.imgStarClicked, for: .normal)
+            star.setImage(imageResources.imgStarClicked, for: .highlighted)
         }
     }
     
