@@ -17,7 +17,7 @@
                BlueprintIdentifier = "27097DD71DB4655900F3D1DC"
                BuildableName = "CARt.app"
                BlueprintName = "CARt"
-               ReferencedContainer = "container:CARt.xcodeproj">
+               ReferencedContainer = "container:Cart.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "27097DEB1DB4655900F3D1DC"
                BuildableName = "CARtTests.xctest"
                BlueprintName = "CARtTests"
-               ReferencedContainer = "container:CARt.xcodeproj">
+               ReferencedContainer = "container:Cart.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "27097DF61DB4655900F3D1DC"
                BuildableName = "CARtUITests.xctest"
                BlueprintName = "CARtUITests"
-               ReferencedContainer = "container:CARt.xcodeproj">
+               ReferencedContainer = "container:Cart.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "27097DD71DB4655900F3D1DC"
             BuildableName = "CARt.app"
             BlueprintName = "CARt"
-            ReferencedContainer = "container:CARt.xcodeproj">
+            ReferencedContainer = "container:Cart.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "27097DD71DB4655900F3D1DC"
             BuildableName = "CARt.app"
             BlueprintName = "CARt"
-            ReferencedContainer = "container:CARt.xcodeproj">
+            ReferencedContainer = "container:Cart.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "27097DD71DB4655900F3D1DC"
             BuildableName = "CARt.app"
             BlueprintName = "CARt"
-            ReferencedContainer = "container:CARt.xcodeproj">
+            ReferencedContainer = "container:Cart.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -79,7 +79,7 @@
 		277661641DE509A70062F668 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
 		277661651DE509A70062F668 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
 		27787FD21DB858BF002D7CE0 /* AddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
-		27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HideKeyboardByTapViewController.swift; path = ../HideKeyboardByTapViewController.swift; sourceTree = "<group>"; };
+		27787FD51DB85B09002D7CE0 /* HideKeyboardByTapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideKeyboardByTapViewController.swift; sourceTree = "<group>"; };
 		278159A11DE77371006E05EF /* PopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDatePicker.swift; sourceTree = "<group>"; };
 		278738F41DBFEE060047EE32 /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		27AB32331DFA7F640037CE56 /* CornerRadiusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		27097DCF1DB4655900F3D1DC = {
 			isa = PBXGroup;
 			children = (
-				27097DDA1DB4655900F3D1DC /* CARt */,
+				27097DDA1DB4655900F3D1DC /* Cart */,
 				27097DEF1DB4655900F3D1DC /* CARtTests */,
 				27097DFA1DB4655900F3D1DC /* CARtUITests */,
 				27097DD91DB4655900F3D1DC /* Products */,
@@ -155,7 +155,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		27097DDA1DB4655900F3D1DC /* CARt */ = {
+		27097DDA1DB4655900F3D1DC /* Cart */ = {
 			isa = PBXGroup;
 			children = (
 				272401571E7651F70012E685 /* Models */,
@@ -169,6 +169,7 @@
 				27097DE41DB4655900F3D1DC /* LaunchScreen.storyboard */,
 				27097DE71DB4655900F3D1DC /* Info.plist */,
 			);
+			name = Cart;
 			path = CARt;
 			sourceTree = "<group>";
 		};
@@ -355,7 +356,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 27097DD31DB4655900F3D1DC /* Build configuration list for PBXProject "CARt" */;
+			buildConfigurationList = 27097DD31DB4655900F3D1DC /* Build configuration list for PBXProject "Cart" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -725,7 +726,7 @@
 				DEVELOPMENT_TEAM = 588Y89GTAL;
 				INFOPLIST_FILE = CARt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARt;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.Cart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -741,7 +742,7 @@
 				DEVELOPMENT_TEAM = 588Y89GTAL;
 				INFOPLIST_FILE = CARt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARt;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.Cart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -759,7 +760,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CARt.app/CARt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cart.temp_caseinsensitive_rename.app/Cart.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -774,7 +775,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.cartrides.CARtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CARt.app/CARt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cart.temp_caseinsensitive_rename.app/Cart.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
@@ -809,7 +810,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27097DD31DB4655900F3D1DC /* Build configuration list for PBXProject "CARt" */ = {
+		27097DD31DB4655900F3D1DC /* Build configuration list for PBXProject "Cart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27097DFE1DB4655900F3D1DC /* Debug */,
