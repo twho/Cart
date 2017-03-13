@@ -246,7 +246,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         request.transportType = .automobile
         let directions = MKDirections(request: request)
         directions.calculate { [unowned self] response, error in
-            guard let unwrappedResponse = response else { return }
+            guard response != nil else { return }
             let distance = Double(round(100*(Double((response!.routes.first?.distance)!)/1609))/100)
             if !self.storeDistance.contains(distance){
                 self.storeDistance.append(distance)

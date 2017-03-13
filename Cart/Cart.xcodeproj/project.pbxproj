@@ -11,8 +11,6 @@
 		27097DDE1DB4655900F3D1DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097DDD1DB4655900F3D1DC /* ViewController.swift */; };
 		27097DE11DB4655900F3D1DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27097DDF1DB4655900F3D1DC /* Main.storyboard */; };
 		27097DE61DB4655900F3D1DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27097DE41DB4655900F3D1DC /* LaunchScreen.storyboard */; };
-		27097DF11DB4655900F3D1DC /* CARtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097DF01DB4655900F3D1DC /* CARtTests.swift */; };
-		27097DFC1DB4655900F3D1DC /* CARtUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097DFB1DB4655900F3D1DC /* CARtUITests.swift */; };
 		27097E0A1DB4736E00F3D1DC /* ButtonModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E091DB4736E00F3D1DC /* ButtonModules.swift */; };
 		27097E0E1DB4766700F3D1DC /* ColoredUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */; };
 		272401591E7652430012E685 /* ImageResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272401581E7652430012E685 /* ImageResources.swift */; };
@@ -66,11 +64,7 @@
 		27097DE51DB4655900F3D1DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27097DE71DB4655900F3D1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27097DEC1DB4655900F3D1DC /* CARtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CARtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27097DF01DB4655900F3D1DC /* CARtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARtTests.swift; sourceTree = "<group>"; };
-		27097DF21DB4655900F3D1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27097DF71DB4655900F3D1DC /* CARtUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CARtUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27097DFB1DB4655900F3D1DC /* CARtUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARtUITests.swift; sourceTree = "<group>"; };
-		27097DFD1DB4655900F3D1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27097E091DB4736E00F3D1DC /* ButtonModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonModules.swift; sourceTree = "<group>"; };
 		27097E0D1DB4766700F3D1DC /* ColoredUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredUIImage.swift; sourceTree = "<group>"; };
 		272401581E7652430012E685 /* ImageResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResources.swift; sourceTree = "<group>"; };
@@ -137,8 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				27097DDA1DB4655900F3D1DC /* Cart */,
-				27097DEF1DB4655900F3D1DC /* CARtTests */,
-				27097DFA1DB4655900F3D1DC /* CARtUITests */,
 				27097DD91DB4655900F3D1DC /* Products */,
 				57C5607240F479367778B502 /* Pods */,
 				AE268046F17DDE08CA3D3B38 /* Frameworks */,
@@ -159,9 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				272401571E7651F70012E685 /* Models */,
-				278D604A1DDFFA8D003EBF70 /* Objects */,
 				27787FD41DB85AC2002D7CE0 /* Extensions */,
-				27787FD11DB85318002D7CE0 /* Views */,
+				27787FD11DB85318002D7CE0 /* ViewControllers */,
 				27DB36131DB487E800753ED5 /* Assets.xcassets */,
 				27097DDB1DB4655900F3D1DC /* AppDelegate.swift */,
 				27097DDD1DB4655900F3D1DC /* ViewController.swift */,
@@ -173,34 +164,24 @@
 			path = CARt;
 			sourceTree = "<group>";
 		};
-		27097DEF1DB4655900F3D1DC /* CARtTests */ = {
-			isa = PBXGroup;
-			children = (
-				27097DF01DB4655900F3D1DC /* CARtTests.swift */,
-				27097DF21DB4655900F3D1DC /* Info.plist */,
-			);
-			path = CARtTests;
-			sourceTree = "<group>";
-		};
-		27097DFA1DB4655900F3D1DC /* CARtUITests */ = {
-			isa = PBXGroup;
-			children = (
-				27097DFB1DB4655900F3D1DC /* CARtUITests.swift */,
-				27097DFD1DB4655900F3D1DC /* Info.plist */,
-			);
-			path = CARtUITests;
-			sourceTree = "<group>";
-		};
 		272401571E7651F70012E685 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				27AB32331DFA7F640037CE56 /* CornerRadiusView.swift */,
 				272401581E7652430012E685 /* ImageResources.swift */,
+				27097E091DB4736E00F3D1DC /* ButtonModules.swift */,
+				27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */,
+				27E43CA91DE0070200005E62 /* DropDownListCell.swift */,
+				272817641DE00855004ED027 /* DropDownListCell.xib */,
+				277661641DE509A70062F668 /* PopDateViewController.swift */,
+				277661651DE509A70062F668 /* PopDateViewController.xib */,
+				278159A11DE77371006E05EF /* PopDatePicker.swift */,
 			);
 			name = Models;
+			path = ../Cart/Models;
 			sourceTree = "<group>";
 		};
-		27787FD11DB85318002D7CE0 /* Views */ = {
+		27787FD11DB85318002D7CE0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				27F2D17C1DB55D4C003CF00D /* EntercodeViewController.swift */,
@@ -213,7 +194,8 @@
 				278738F41DBFEE060047EE32 /* PhoneViewController.swift */,
 				27E61D121DF679F30073EE63 /* WebViewController.swift */,
 			);
-			name = Views;
+			name = ViewControllers;
+			path = ../Cart/ViewControllers;
 			sourceTree = "<group>";
 		};
 		27787FD41DB85AC2002D7CE0 /* Extensions */ = {
@@ -225,20 +207,7 @@
 				27D2A5AA1DD657D600F8AD15 /* UIColorByHexRGB.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		278D604A1DDFFA8D003EBF70 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				27097E091DB4736E00F3D1DC /* ButtonModules.swift */,
-				27E336881DB98E5B00DB9D9A /* PinAnnotation.swift */,
-				27E43CA91DE0070200005E62 /* DropDownListCell.swift */,
-				272817641DE00855004ED027 /* DropDownListCell.xib */,
-				277661641DE509A70062F668 /* PopDateViewController.swift */,
-				277661651DE509A70062F668 /* PopDateViewController.xib */,
-				278159A11DE77371006E05EF /* PopDatePicker.swift */,
-			);
-			name = Objects;
+			path = ../Cart/Extensions;
 			sourceTree = "<group>";
 		};
 		57C5607240F479367778B502 /* Pods */ = {
@@ -336,7 +305,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = cartrides.org;
 				TargetAttributes = {
 					27097DD71DB4655900F3D1DC = {
@@ -577,7 +546,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27097DF11DB4655900F3D1DC /* CARtTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +553,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27097DFC1DB4655900F3D1DC /* CARtUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +609,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -692,6 +660,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -721,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 862A3A54516FA384D0A4E1C4 /* Pods-CARt.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 588Y89GTAL;
@@ -737,6 +707,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4175815E6396BD15EEAD9806 /* Pods-CARt.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 588Y89GTAL;
